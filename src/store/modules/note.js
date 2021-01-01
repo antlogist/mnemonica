@@ -42,7 +42,12 @@ const noteStore = {
     async fetchNote({ dispatch, commit }, id) {
       try {
         dispatch("toggleLoader", true, { root: true });
-        const response = await noteApi.fetchNote(id);
+        const [response, cats] = await Promise.all([
+          noteApi.fetchNote(id),
+          noteApi.fetchCats()
+        ]);
+        console.log(cats);
+        console.log(response);
         if (response.Error) {
           throw Error(response.Error);
         }
@@ -56,7 +61,12 @@ const noteStore = {
     async createNote({ dispatch, commit }) {
       try {
         dispatch("toggleLoader", true, { root: true });
-        const response = await noteApi.createNote();
+        const [response, cats] = await Promise.all([
+          noteApi.createNote(),
+          noteApi.fetchCats()
+        ]);
+        console.log(cats);
+        console.log(response);
         if (response.Error) {
           throw Error(response.Error);
         }

@@ -1,6 +1,11 @@
 import axios from "@/plugins/axios/wp/";
 
 class Note {
+  async fetchCats() {
+    const response = await axios.get(`/wp-json/note/v1/cats`);
+    return response;
+  }
+
   async fetchNotes(page) {
     const response = await axios.get(`/wp-json/note/v1/list/${page}`);
     return response;
