@@ -2,6 +2,7 @@
   <v-dialog v-model="isDialogNoteShow" fullscreen persistent>
     <v-card>
       <DialogNoteToolbar></DialogNoteToolbar>
+      <DialogNoteSelectCat></DialogNoteSelectCat>
       <v-container>
         <DialogNoteTitle></DialogNoteTitle>
         <DialogNoteExcerpt></DialogNoteExcerpt>
@@ -13,6 +14,7 @@
 <script>
 import { mapGetters } from "vuex";
 import DialogNoteToolbar from "@/components/dialog/dialog-note/DialogNoteToolbar";
+import DialogNoteSelectCat from "@/components/dialog/dialog-note/DialogNoteSelectCat";
 import DialogNoteTitle from "@/components/dialog/dialog-note/DialogNoteTitle";
 import DialogNoteExcerpt from "@/components/dialog/dialog-note/DialogNoteExcerpt";
 export default {
@@ -23,6 +25,7 @@ export default {
   },
   components: {
     DialogNoteToolbar,
+    DialogNoteSelectCat,
     DialogNoteTitle,
     DialogNoteExcerpt
   }

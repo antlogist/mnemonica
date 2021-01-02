@@ -1,19 +1,21 @@
 import noteApi from "@/services/noteApi";
 import mutations from "@/store/mutations";
 
-const { SHOW_DIALOG, CURRENT_NOTE } = mutations;
+const { SHOW_DIALOG, CURRENT_NOTE, CATS } = mutations;
 
 const noteStore = {
   namespaced: true,
   state: {
     isDialogNoteShow: false,
     currentNoteId: "",
-    currentNote: {}
+    currentNote: {},
+    cats: {}
   },
   getters: {
     isDialogNoteShow: ({ isDialogNoteShow }) => isDialogNoteShow,
     currentNoteId: ({ currentNoteId }) => currentNoteId,
-    currentNote: ({ currentNote }) => currentNote
+    currentNote: ({ currentNote }) => currentNote,
+    cats: ({ cats }) => cats
   },
   mutations: {
     [SHOW_DIALOG](state, bool) {
@@ -21,6 +23,9 @@ const noteStore = {
     },
     [CURRENT_NOTE](state, note) {
       state.currentNote = note;
+    },
+    [CATS](state, cats) {
+      state.cats = cats;
     },
     changeTitle(state, title) {
       state.currentNote.title ? (state.currentNote.title.rendered = title) : "";
@@ -51,7 +56,8 @@ const noteStore = {
         if (response.Error) {
           throw Error(response.Error);
         }
-        commit(CURRENT_NOTE, response);
+        commit("CURRENT_NOTE", response);
+        commit("CATS", cats);
       } catch (err) {
         console.log(err);
       } finally {
@@ -71,7 +77,8 @@ const noteStore = {
           throw Error(response.Error);
         }
         dispatch("notes/reloadCurrentPages", {}, { root: true });
-        commit(CURRENT_NOTE, response);
+        commit("CURRENT_NOTE", response);
+        commit("CATS", cats);
       } catch (err) {
         console.log(err);
       } finally {
@@ -90,7 +97,8 @@ const noteStore = {
         const id = state.currentNote.id;
         const title = state.currentNote.title.rendered;
         const excerpt = state.currentNote.excerpt.rendered;
-        const response = await noteApi.saveNote(id, title, excerpt);
+        const catId = state.currentNote.categories[0];
+        const response = await noteApi.saveNote(id, title, excerpt, catId);
         if (response.Error) {
           throw Error(response.Error);
         }
