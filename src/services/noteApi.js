@@ -1,6 +1,11 @@
 import axios from "@/plugins/axios/wp/";
 
 class Note {
+  async fetchCats() {
+    const response = await axios.get(`/wp-json/note/v1/cats`);
+    return response;
+  }
+
   async fetchNotes(page) {
     const response = await axios.get(`/wp-json/note/v1/list/${page}`);
     return response;
@@ -26,10 +31,12 @@ class Note {
     return response;
   }
 
-  async saveNote(id, title, excerpt) {
+  async saveNote(id, title, excerpt, catId) {
+    console.log(catId);
     const data = {
       title: title,
-      excerpt: excerpt
+      excerpt: excerpt,
+      categories: catId
     };
     const response = await axios.post(`/wp-json/wp/v2/note/${id}`, data);
     return response;
