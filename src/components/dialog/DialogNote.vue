@@ -21,48 +21,8 @@
         </template>
       </v-toolbar>
       <v-container>
-        <template>
-          <v-edit-dialog
-            large
-            persistent
-            @close="editClosed('isEditTitle')"
-            @open="editOpened('isEditTitle')"
-            :return-value.sync="currentTitle"
-          >
-            <v-card-title>{{ currentTitle }}</v-card-title>
-
-            <template v-slot:input>
-              <v-text-field
-                v-model="currentTitle"
-                label="Edit"
-                single-line
-                counter
-              ></v-text-field>
-            </template>
-          </v-edit-dialog>
-        </template>
-
-        <template>
-          <v-edit-dialog
-            persistent
-            @close="editClosed('isEditExcerpt')"
-            @open="editOpened('isEditExcerpt')"
-            :return-value.sync="currentExcerpt"
-            large
-          >
-            <v-card-text>
-              <div v-html="currentExcerpt"></div>
-            </v-card-text>
-
-            <template v-slot:input>
-              <v-textarea
-                v-model="currentExcerpt"
-                label="Edit"
-                counter
-              ></v-textarea>
-            </template>
-          </v-edit-dialog>
-        </template>
+        <DialogNoteTitle></DialogNoteTitle>
+        <DialogNoteExcerpt></DialogNoteExcerpt>
       </v-container>
     </v-card>
   </v-dialog>
@@ -70,42 +30,28 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import DialogNoteTitle from "@/components/dialog/dialog-note/DialogNoteTitle";
+import DialogNoteExcerpt from "@/components/dialog/dialog-note/DialogNoteExcerpt";
 export default {
   name: "DialogNote",
-  data: () => ({
-    isEditTitle: false,
-    isEditExcerpt: false,
-  }),
+  data: () => ({}),
   computed: {
-    ...mapGetters("note", ["isDialogNoteShow", "currentNote"]),
-    currentTitle: {
-      get() {
-        return this.currentNote.title ? this.currentNote.title.rendered : "";
-      },
-      set(title) {
-        this.changeTitle(title);
-      }
-    },
-    currentExcerpt: {
-      get() {
-        return this.currentNote.excerpt ? this.currentNote.excerpt.rendered : "";
-      },
-      set(excerpt) {
-        this.changeExcerpt(excerpt);
-      }
-    }
+    ...mapGetters("note", ["isDialogNoteShow", "currentNote"])
   },
   methods: {
-    ...mapActions("note", ["closeDialogNote", "changeTitle", "changeExcerpt", "saveNote"]),
+    ...mapActions("note", [
+      "closeDialogNote",
+      "changeTitle",
+      "changeExcerpt",
+      "saveNote"
+    ]),
     closeDialog() {
       this.closeDialogNote(false);
-    },
-    editOpened(data) {
-      this.[data] = true;
-    },
-    editClosed(data) {
-      this.[data] = false;
     }
+  },
+  components: {
+    DialogNoteTitle,
+    DialogNoteExcerpt
   }
 };
 </script>
