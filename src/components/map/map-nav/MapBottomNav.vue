@@ -1,6 +1,6 @@
 <template>
   <v-bottom-navigation app>
-    <v-btn @click="newArea">
+    <v-btn @click="newMap">
       <span>New</span>
       <v-icon>mdi-plus</v-icon>
     </v-btn>
@@ -12,11 +12,13 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "MapBottomNav",
   methods: {
-    newArea() {
-      console.log("area");
+    ...mapActions("maps", ["fetchMaps", "createMap"]),
+    newMap() {
+      this.createMap();
     },
     scale() {
       console.log("scale");
