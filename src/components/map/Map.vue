@@ -1,13 +1,17 @@
 <template>
   <div>
-    <h1>Map</h1>
+    <MapField></MapField>
   </div>
 </template>
 
 <script>
+import MapField from "@/components/map/map-field/MapField";
 export default {
   name: "Map",
   methods: {},
-  watch: {}
+  watch: {},
+  components: {
+    MapField
+  }
 };
 </script>

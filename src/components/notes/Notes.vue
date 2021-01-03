@@ -3,36 +3,37 @@
     <template>
       <dialog-note></dialog-note>
     </template>
+    <v-container>
+      <v-list>
+        <v-list two-line rounded>
+          <v-list-item-group v-model="selectedItem" color="black">
+            <v-list-item
+              class="grey lighten-4"
+              v-for="(note, index) in notes"
+              :key="index"
+            >
+              <v-list-item-avatar>
+                <v-icon class="grey lighten-1" dark>
+                  mdi-note
+                </v-icon>
+              </v-list-item-avatar>
 
-    <v-list>
-      <v-list two-line rounded>
-        <v-list-item-group v-model="selectedItem" color="black">
-          <v-list-item
-            class="grey lighten-4"
-            v-for="(note, index) in notes"
-            :key="index"
-          >
-            <v-list-item-avatar>
-              <v-icon class="grey lighten-1" dark>
-                mdi-note
-              </v-icon>
-            </v-list-item-avatar>
-
-            <v-list-item-content>
-              <v-list-item-title v-text="note.title"></v-list-item-title>
-              <v-list-item-subtitle>
-                <span class="mr-2" v-if="note.cat"
-                  ><v-badge inline tile :content="note.cat"></v-badge
-                ></span>
-                <span class="mr-2">id: {{ note.id }} </span>
-                <span class="mr-2">date: {{ note.date }} </span>
-                <span class="mr-2">time: {{ note.time }}</span>
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
+              <v-list-item-content>
+                <v-list-item-title v-text="note.title"></v-list-item-title>
+                <v-list-item-subtitle>
+                  <span class="mr-2" v-if="note.cat"
+                    ><v-badge inline tile :content="note.cat"></v-badge
+                  ></span>
+                  <span class="mr-2">id: {{ note.id }} </span>
+                  <span class="mr-2">date: {{ note.date }} </span>
+                  <span class="mr-2">time: {{ note.time }}</span>
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
       </v-list>
-    </v-list>
+    </v-container>
 
     <div class="text-center my-5" v-if="currentPage < totalPages">
       <v-btn elevation="2" fab @click="onChangeCurrentPage"

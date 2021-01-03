@@ -1,12 +1,14 @@
 <template>
-  <v-radio-group row v-model="currentCatId">
-    <v-radio
-      v-for="(cat, catId, index) in cats"
-      :key="index"
-      :label="cats[catId]"
-      :value="catId"
-    ></v-radio>
-  </v-radio-group>
+  <v-container>
+    <v-radio-group row v-model="currentCatId">
+      <v-radio
+        v-for="(cat, catId, index) in cats"
+        :key="index"
+        :label="cats[catId]"
+        :value="catId"
+      ></v-radio>
+    </v-radio-group>
+  </v-container>
 </template>
 
 <script>
