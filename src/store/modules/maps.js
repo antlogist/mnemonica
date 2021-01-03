@@ -41,20 +41,18 @@ const mapsStore = {
     async createMap({ dispatch }) {
       try {
         dispatch("toggleLoader", true, { root: true });
-        const [response] = await Promise.all([
-          mapApi.createMap()
-        ]);
+        const [response] = await Promise.all([mapApi.createMap()]);
         console.log(response);
         if (response.Error) {
           throw Error(response.Error);
         }
-        dispatch("fetchMaps", {root: false});
+        dispatch("fetchMaps", { root: false });
       } catch (err) {
         console.log(err);
       } finally {
         dispatch("toggleLoader", false, { root: true });
       }
-    },
+    }
   }
 };
 

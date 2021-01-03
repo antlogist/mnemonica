@@ -1,19 +1,19 @@
 <template>
   <div>
-    <MapField></MapField>
+    <MapsField></MapsField>
     <MapBottomNav></MapBottomNav>
   </div>
 </template>
 
 <script>
-import MapField from "@/components/map/map-field/MapField";
+import MapsField from "@/components/map/map-field/MapsField";
 import MapBottomNav from "@/components/map/map-nav/MapBottomNav";
 export default {
   name: "Map",
   methods: {},
   watch: {},
   components: {
-    MapField,
+    MapsField,
     MapBottomNav
   }
 };

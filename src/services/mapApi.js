@@ -8,8 +8,12 @@ class Map {
   async createMap() {
     const data = {
       title: "New Map",
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores possimus ratione placeat ea officia quos excepturi maiores fugit itaque, quia doloribus ipsam sunt distinctio vel nemo officiis magnam deserunt accusamus."
+      excerpt: JSON.stringify({
+        width: "100",
+        height: "100",
+        color: "gray",
+        children: []
+      })
     };
     const response = await axios.post(`/wp-json/wp/v2/map/`, data);
     return response;
