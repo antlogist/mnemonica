@@ -4,11 +4,11 @@
     <VueDragResize
       v-for="map in maps"
       :key="map.id"
-      :style="{ backgroundColor: map.content.color }"
+      :style="{ backgroundColor: map.excerpt.color }"
       class="parent-map"
       :isActive="false"
-      :w="Number(map.content.width)"
-      :h="Number(map.content.height)"
+      :w="Number(map.excerpt.width)"
+      :h="Number(map.excerpt.height)"
       v-on:resizing="resize"
       v-on:dragging="resize"
     >

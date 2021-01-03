@@ -8,6 +8,10 @@
       <span>Scale</span>
       <v-icon>mdi-ruler</v-icon>
     </v-btn>
+    <v-btn @click="save">
+      <span>Save</span>
+      <v-icon>mdi-content-save</v-icon>
+    </v-btn>
   </v-bottom-navigation>
 </template>
 
@@ -16,12 +20,15 @@ import { mapActions } from "vuex";
 export default {
   name: "MapsBottomNav",
   methods: {
-    ...mapActions("maps", ["fetchMaps", "createMap"]),
+    ...mapActions("maps", ["fetchMaps", "createMap", "saveMaps"]),
     newMap() {
       this.createMap();
     },
     scale() {
       console.log("scale");
+    },
+    save() {
+      this.saveMaps();
     }
   }
 };
