@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Map from "@/components/map/Map";
+import Maps from "@/components/maps/Maps";
 import Notes from "@/components/notes/Notes";
 
 Vue.use(Router);
@@ -12,12 +12,12 @@ export function createRouter() {
       {
         path: "/",
         name: "Home",
-        component: Map
+        component: Maps
       },
       {
-        path: "/map",
-        name: "Map",
-        component: Map
+        path: "/maps",
+        name: "Maps",
+        component: Maps
       },
       {
         path: "/notes",

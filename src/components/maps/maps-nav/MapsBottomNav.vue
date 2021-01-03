@@ -14,7 +14,7 @@
 <script>
 import { mapActions } from "vuex";
 export default {
-  name: "MapBottomNav",
+  name: "MapsBottomNav",
   methods: {
     ...mapActions("maps", ["fetchMaps", "createMap"]),
     newMap() {
