@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import VueDragResize from "vue-drag-resize";
 
 export default {
@@ -56,6 +57,7 @@ export default {
   },
 
   methods: {
+    ...mapActions("maps", ["fetchMaps"]),
     resize(newRect) {
       this.width = newRect.width;
       this.height = newRect.height;
@@ -66,6 +68,9 @@ export default {
     onClick() {
       console.log("Click!!!");
     }
+  },
+  mounted() {
+    this.fetchMaps();
   }
 };
 </script>
@@ -82,12 +87,14 @@ export default {
   background-color: coral;
 }
 .menu {
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
   position: relative;
   background-color: red;
-  margin-top: -25px;
-  margin-left: -25px;
+  border: 1px dotted black;
+  margin-top: -10px;
+  margin-left: -10px;
   border-radius: 50%;
   z-index: 100;
 }

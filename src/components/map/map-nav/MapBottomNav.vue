@@ -6,7 +6,7 @@
     </v-btn>
     <v-btn @click="scale">
       <span>Scale</span>
-      <v-icon>mdi-plus</v-icon>
+      <v-icon>mdi-ruler</v-icon>
     </v-btn>
   </v-bottom-navigation>
 </template>
@@ -17,6 +17,9 @@ export default {
   methods: {
     newArea() {
       console.log("area");
+    },
+    scale() {
+      console.log("scale");
     }
   }
 };
