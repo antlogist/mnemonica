@@ -4,6 +4,10 @@
       <span>New</span>
       <v-icon>mdi-plus</v-icon>
     </v-btn>
+    <v-btn @click="scale">
+      <span>Scale</span>
+      <v-icon>mdi-plus</v-icon>
+    </v-btn>
   </v-bottom-navigation>
 </template>
 
