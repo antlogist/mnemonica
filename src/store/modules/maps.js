@@ -20,9 +20,7 @@ const mapsStore = {
     async fetchMaps({ commit, dispatch }) {
       try {
         dispatch("toggleLoader", true, { root: true });
-
         const response = await mapApi.fetchMaps();
-        console.log(response);
         if (response.Error) {
           throw Error(response.Error);
         }
@@ -56,28 +54,22 @@ const mapsStore = {
 
     async saveMaps({ state, dispatch }) {
       const mapsIds = Object.keys(state.maps);
-      console.log(mapsIds);
-
       for (let i = 0; i < mapsIds.length; i++) {
         const id = mapsIds[i];
         const title = state.maps[id]["title"];
         const excerpt = state.maps[id]["excerpt"];
-        await dispatch("saveMap", id, title, excerpt);
+        await dispatch("saveMap", {id: id, title: title, excerpt: excerpt}, { root: false });
       }
+      dispatch("fetchMaps", { root: false });
     },
 
-    async saveMap({ dispatch }, id, title, excerpt) {
+    async saveMap({ dispatch }, {id, title, excerpt}) {
       try {
         dispatch("toggleLoader", true, { root: true });
-
         const response = await mapApi.saveMap(id, title, excerpt);
-
         if (response.Error) {
           throw Error(response.Error);
         }
-        console.log(response);
-
-        dispatch("fetchMaps", { root: false });
       } catch (err) {
         console.log(err);
       } finally {

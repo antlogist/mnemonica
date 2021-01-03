@@ -10,6 +10,8 @@ class Map {
     const data = {
       title: "New Map",
       excerpt: JSON.stringify({
+        x: "0",
+        y: "0",
         width: "100",
         height: "100",
         color: "gray",
@@ -25,7 +27,7 @@ class Map {
   async saveMap(id, title, excerpt) {
     const data = {
       title: title,
-      excerpt: excerpt
+      excerpt: JSON.stringify(excerpt)
     };
     const response = await axios.post(`/wp-json/wp/v2/map/${id}`, data);
     return response;
