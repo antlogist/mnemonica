@@ -58,12 +58,16 @@ const mapsStore = {
         const id = mapsIds[i];
         const title = state.maps[id]["title"];
         const excerpt = state.maps[id]["excerpt"];
-        await dispatch("saveMap", {id: id, title: title, excerpt: excerpt}, { root: false });
+        await dispatch(
+          "saveMap",
+          { id: id, title: title, excerpt: excerpt },
+          { root: false }
+        );
       }
       dispatch("fetchMaps", { root: false });
     },
 
-    async saveMap({ dispatch }, {id, title, excerpt}) {
+    async saveMap({ dispatch }, { id, title, excerpt }) {
       try {
         dispatch("toggleLoader", true, { root: true });
         const response = await mapApi.saveMap(id, title, excerpt);
