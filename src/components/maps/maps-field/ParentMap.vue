@@ -17,13 +17,15 @@
       @resizestop="onResizstop(map.id)"
     >
       <v-btn
-      class="parent-menu-btn"
-      @click="opentParentDialog(map.id)"
-      icon
-      color="white"
+        class="parent-menu-btn"
+        @click="openParentDialog(map.id)"
+        color="secondary"
+        fab
+        x-small
+        dark
       >
-      <v-icon>mdi-menu</v-icon>
-    </v-btn>
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
     </VueDragResize>
   </div>
 </template>
@@ -44,7 +46,7 @@ export default {
     ...mapGetters("maps", ["maps"])
   },
   methods: {
-    ...mapActions("maps", ["fetchMaps"]),
+    ...mapActions("maps", ["fetchMaps", "openDialogParentMap"]),
     onClicked(id) {
       console.log("onClicked " + id);
       //      console.log(this.top, this.left);
@@ -64,8 +66,8 @@ export default {
       this.top = newRect.top;
       this.left = newRect.left;
     },
-    opentParentDialog(id) {
-      console.log("parent di " + id);
+    openParentDialog(id) {
+      this.openDialogParentMap(id);
     }
   },
   mounted() {
@@ -78,11 +80,11 @@ export default {
 </script>
 
 <style lang="scss" scoped="true">
-  .parent-menu-btn {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: -30px;
-    margin-left: -10px;
-  }
+.parent-menu-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -15px;
+  margin-left: -10px;
+}
 </style>

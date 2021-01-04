@@ -1,22 +1,33 @@
 import mapApi from "@/services/mapApi";
 import mutations from "@/store/mutations";
 
-const { MAPS } = mutations;
+const { MAPS, SHOW_PARENT_DIALOG } = mutations;
 
 const mapsStore = {
   namespaced: true,
   state: {
+    isDialogParentMapShow: false,
     maps: []
   },
   getters: {
-    maps: ({ maps }) => maps
+    maps: ({ maps }) => maps,
+    isDialogParentMapShow: ({ isDialogParentMapShow }) => isDialogParentMapShow
   },
   mutations: {
     [MAPS](state, value) {
       state.maps = value;
+    },
+    [SHOW_PARENT_DIALOG](state, bool) {
+      state.isDialogParentMapShow = bool;
     }
   },
   actions: {
+    openDialogParentMap({ commit }) {
+      commit("SHOW_PARENT_DIALOG", true);
+    },
+    closeDialogParentMap({ commit }) {
+      commit("SHOW_PARENT_DIALOG", false);
+    },
     async fetchMaps({ commit, dispatch }) {
       try {
         dispatch("toggleLoader", true, { root: true });
