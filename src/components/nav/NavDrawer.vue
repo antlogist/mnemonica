@@ -31,9 +31,9 @@ export default {
   data: () => ({
     navItems: [
       {
-        title: "Map",
-        component: "Map",
-        link: "map"
+        title: "Maps",
+        component: "Maps",
+        link: "maps"
       },
       {
         title: "Notes",

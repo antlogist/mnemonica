@@ -32,7 +32,6 @@ class Note {
   }
 
   async saveNote(id, title, excerpt, catId) {
-    console.log(catId);
     const data = {
       title: title,
       excerpt: excerpt,

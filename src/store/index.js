@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import drawer from "./modules/drawer";
 import notes from "./modules/notes";
+import maps from "./modules/maps";
 import note from "./modules/note";
 import loader from "./modules/loader";
 import auth from "./modules/auth";
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     drawer,
     auth,
     loader,
+    maps,
     notes,
     note,
     notification
