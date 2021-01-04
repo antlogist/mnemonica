@@ -16,6 +16,14 @@
       @dragstop="onDragstop(map.id)"
       @resizestop="onResizstop(map.id)"
     >
+      <v-btn
+      class="parent-menu-btn"
+      @click="opentParentDialog(map.id)"
+      icon
+      color="white"
+      >
+      <v-icon>mdi-menu</v-icon>
+    </v-btn>
     </VueDragResize>
   </div>
 </template>
@@ -42,8 +50,6 @@ export default {
       //      console.log(this.top, this.left);
     },
     onDragstop(id) {
-      //      console.log("onDragstop " + id);
-      //      console.log(this.top, this.left);
       this.maps[id].excerpt["x"] = String(this.left);
       this.maps[id].excerpt["y"] = String(this.top);
     },
@@ -51,15 +57,15 @@ export default {
       this.maps[id].excerpt["width"] = String(this.width);
       this.maps[id].excerpt["height"] = String(this.height);
       this.onDragstop(id);
-      console.log("onResizstop " + id);
-      console.log(this.top, this.left);
     },
     resize(newRect) {
       this.width = newRect.width;
       this.height = newRect.height;
       this.top = newRect.top;
       this.left = newRect.left;
-      //      console.log(this.top, this.left);
+    },
+    opentParentDialog(id) {
+      console.log("parent di " + id);
     }
   },
   mounted() {
@@ -71,4 +77,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped="true"></style>
+<style lang="scss" scoped="true">
+  .parent-menu-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -30px;
+    margin-left: -10px;
+  }
+</style>
