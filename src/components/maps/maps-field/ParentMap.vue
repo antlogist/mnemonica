@@ -1,11 +1,12 @@
 <template>
   <div>
+    {{ maps }}
     <VueDragResize
       v-for="map in maps"
       :key="map.id"
       :style="{ backgroundColor: map.excerpt.color }"
       class="parent-map"
-      :isActive="false"
+      :isActive="Boolean(map.excerpt.isActivated)"
       :x="Number(map.excerpt.x)"
       :y="Number(map.excerpt.y)"
       :w="Number(map.excerpt.width)"
@@ -15,15 +16,20 @@
       @clicked="onClicked(map.id)"
       @dragstop="onDragstop(map.id)"
       @resizestop="onResizstop(map.id)"
+      @activated="onActivated(map.id)"
+      @deactivated="onDeactivated(map.id)"
     >
       <v-btn
-      class="parent-menu-btn"
-      @click="opentParentDialog(map.id)"
-      icon
-      color="white"
+        v-if="map.excerpt.isActivated"
+        class="parent-menu-btn"
+        @click="openParentDialog(map.id)"
+        color="secondary"
+        fab
+        x-small
+        dark
       >
-      <v-icon>mdi-menu</v-icon>
-    </v-btn>
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
     </VueDragResize>
   </div>
 </template>
@@ -44,7 +50,13 @@ export default {
     ...mapGetters("maps", ["maps"])
   },
   methods: {
-    ...mapActions("maps", ["fetchMaps"]),
+    ...mapActions("maps", ["fetchMaps", "openDialogParentMap"]),
+    onActivated(id) {
+      this.maps[id].excerpt["isActivated"] = true;
+    },
+    onDeactivated(id) {
+      this.maps[id].excerpt["isActivated"] = false;
+    },
     onClicked(id) {
       console.log("onClicked " + id);
       //      console.log(this.top, this.left);
@@ -64,8 +76,8 @@ export default {
       this.top = newRect.top;
       this.left = newRect.left;
     },
-    opentParentDialog(id) {
-      console.log("parent di " + id);
+    openParentDialog(id) {
+      this.openDialogParentMap(id);
     }
   },
   mounted() {
@@ -78,11 +90,11 @@ export default {
 </script>
 
 <style lang="scss" scoped="true">
-  .parent-menu-btn {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: -30px;
-    margin-left: -10px;
-  }
+.parent-menu-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -15px;
+  margin-left: -10px;
+}
 </style>
