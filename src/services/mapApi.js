@@ -10,6 +10,7 @@ class Map {
     const data = {
       title: "New Map",
       excerpt: JSON.stringify({
+        isActivated: false,
         x: "0",
         y: "0",
         width: "100",

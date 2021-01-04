@@ -1,11 +1,12 @@
 <template>
   <div>
+    {{ maps }}
     <VueDragResize
       v-for="map in maps"
       :key="map.id"
       :style="{ backgroundColor: map.excerpt.color }"
       class="parent-map"
-      :isActive="false"
+      :isActive="Boolean(map.excerpt.isActivated)"
       :x="Number(map.excerpt.x)"
       :y="Number(map.excerpt.y)"
       :w="Number(map.excerpt.width)"
@@ -15,8 +16,11 @@
       @clicked="onClicked(map.id)"
       @dragstop="onDragstop(map.id)"
       @resizestop="onResizstop(map.id)"
+      @activated="onActivated(map.id)"
+      @deactivated="onDeactivated(map.id)"
     >
       <v-btn
+        v-if="map.excerpt.isActivated"
         class="parent-menu-btn"
         @click="openParentDialog(map.id)"
         color="secondary"
@@ -47,6 +51,12 @@ export default {
   },
   methods: {
     ...mapActions("maps", ["fetchMaps", "openDialogParentMap"]),
+    onActivated(id) {
+      this.maps[id].excerpt["isActivated"] = true;
+    },
+    onDeactivated(id) {
+      this.maps[id].excerpt["isActivated"] = false;
+    },
     onClicked(id) {
       console.log("onClicked " + id);
       //      console.log(this.top, this.left);
