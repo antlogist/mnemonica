@@ -15,12 +15,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .maps-wrapper {
   position: relative;
   background-color: coral;
   width: 100%;
   height: 100vh;
   overflow: scroll;
+}
+.s-circle {
+  border-radius: 50%;
 }
 </style>
