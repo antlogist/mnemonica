@@ -7,8 +7,8 @@
       <v-toolbar-title>Parent Map</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn dark text>
-          Save
+        <v-btn icon @click="save" dark text>
+          <v-icon>mdi-content-save</v-icon>
         </v-btn>
       </v-toolbar-items>
     </template>
@@ -21,9 +21,12 @@ export default {
   name: "DialogParentMapToolbar",
   computed: {},
   methods: {
-    ...mapActions("maps", ["closeDialogParentMap"]),
+    ...mapActions("maps", ["closeDialogParentMap", "saveMaps"]),
     closeDialog() {
       this.closeDialogParentMap();
+    },
+    save() {
+      this.saveMaps();
     }
   }
 };

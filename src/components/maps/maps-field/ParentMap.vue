@@ -5,7 +5,7 @@
       v-for="map in maps"
       :key="map.id"
       :style="{ backgroundColor: map.excerpt.color }"
-      class="parent-map"
+      :class="map.excerpt.class"
       :isActive="Boolean(map.excerpt.isActivated)"
       :x="Number(map.excerpt.x)"
       :y="Number(map.excerpt.y)"

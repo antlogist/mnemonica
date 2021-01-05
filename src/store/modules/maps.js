@@ -7,11 +7,13 @@ const mapsStore = {
   namespaced: true,
   state: {
     isDialogParentMapShow: false,
+    currentParentMapId: 0,
     maps: []
   },
   getters: {
     maps: ({ maps }) => maps,
-    isDialogParentMapShow: ({ isDialogParentMapShow }) => isDialogParentMapShow
+    isDialogParentMapShow: ({ isDialogParentMapShow }) => isDialogParentMapShow,
+    currentParentMapId: ({ currentParentMapId }) => currentParentMapId
   },
   mutations: {
     [MAPS](state, value) {
@@ -22,10 +24,12 @@ const mapsStore = {
     }
   },
   actions: {
-    openDialogParentMap({ commit }) {
+    openDialogParentMap({ commit, state }, id) {
+      state.currentParentMapId = Number(id);
       commit("SHOW_PARENT_DIALOG", true);
     },
-    closeDialogParentMap({ commit }) {
+    closeDialogParentMap({ commit, state }) {
+      state.currentParentMapId = "";
       commit("SHOW_PARENT_DIALOG", false);
     },
     async fetchMaps({ commit, dispatch }) {

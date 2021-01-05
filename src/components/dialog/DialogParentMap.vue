@@ -2,10 +2,10 @@
   <v-dialog v-model="isDialogParentMapShow" fullscreen persistent>
     <v-card>
       <DialogParentMapToolbar></DialogParentMapToolbar>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio asperiores
-      esse at, id repudiandae, cupiditate corrupti reprehenderit. Aperiam nam
-      cum porro, neque, praesentium, minus magnam optio consequuntur repellat
-      amet in.
+      <v-container>
+        <DialogParentMapTitle></DialogParentMapTitle>
+        <DialogParentMapShape></DialogParentMapShape>
+      </v-container>
     </v-card>
   </v-dialog>
 </template>
@@ -13,6 +13,8 @@
 <script>
 import { mapGetters } from "vuex";
 import DialogParentMapToolbar from "@/components/dialog/dialog-parent-map/DialogParentMapToolbar";
+import DialogParentMapTitle from "@/components/dialog/dialog-parent-map/DialogParentMapTitle";
+import DialogParentMapShape from "@/components/dialog/dialog-parent-map/DialogParentMapShape";
 export default {
   name: "DialogParentMap",
   data: () => ({}),
@@ -20,7 +22,9 @@ export default {
     ...mapGetters("maps", ["isDialogParentMapShow"])
   },
   components: {
-    DialogParentMapToolbar
+    DialogParentMapToolbar,
+    DialogParentMapTitle,
+    DialogParentMapShape
   }
 };
 </script>
