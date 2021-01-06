@@ -15,7 +15,7 @@ class Map {
         y: "0",
         width: "100",
         height: "100",
-        color: "gray",
+        color: "#88885CFF",
         class: ["parent-map", "s-rectangle"],
         children: []
       })
