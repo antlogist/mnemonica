@@ -1,7 +1,7 @@
 <template>
-    <v-col class="d-flex" cols="12" sm="4">
-      <v-select :items="shapes" v-model="select" label="Shapes"></v-select>
-    </v-col>
+  <v-col class="d-flex" cols="12" sm="4">
+    <v-select :items="shapes" v-model="select" label="Shapes"></v-select>
+  </v-col>
 </template>
 
 <script>
@@ -44,7 +44,6 @@ export default {
           });
         });
         mapClasses.push(item);
-        console.log(item);
       }
     }
   }
