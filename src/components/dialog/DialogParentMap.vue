@@ -4,7 +4,10 @@
       <DialogParentMapToolbar></DialogParentMapToolbar>
       <v-container>
         <DialogParentMapTitle></DialogParentMapTitle>
-        <DialogParentMapShape></DialogParentMapShape>
+        <v-row align="center">
+          <DialogParentMapShape></DialogParentMapShape>
+          <DialogParentMapColor></DialogParentMapColor>
+        </v-row>
       </v-container>
     </v-card>
   </v-dialog>
@@ -15,6 +18,7 @@ import { mapGetters } from "vuex";
 import DialogParentMapToolbar from "@/components/dialog/dialog-parent-map/DialogParentMapToolbar";
 import DialogParentMapTitle from "@/components/dialog/dialog-parent-map/DialogParentMapTitle";
 import DialogParentMapShape from "@/components/dialog/dialog-parent-map/DialogParentMapShape";
+import DialogParentMapColor from "@/components/dialog/dialog-parent-map/DialogParentMapColor";
 export default {
   name: "DialogParentMap",
   data: () => ({}),
@@ -24,7 +28,8 @@ export default {
   components: {
     DialogParentMapToolbar,
     DialogParentMapTitle,
-    DialogParentMapShape
+    DialogParentMapShape,
+    DialogParentMapColor
   }
 };
 </script>
