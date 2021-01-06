@@ -6,8 +6,8 @@
         <DialogParentMapTitle></DialogParentMapTitle>
         <v-row align="center">
           <DialogParentMapShape></DialogParentMapShape>
-          <DialogParentMapColor></DialogParentMapColor>
         </v-row>
+          <DialogParentMapColor></DialogParentMapColor>
       </v-container>
     </v-card>
   </v-dialog>
