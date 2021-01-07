@@ -64,7 +64,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import DialogNote from "@/components/dialog/DialogNote";
+import DialogNote from "@/components/notes/DialogNote";
 export default {
   name: "Notes",
   data: () => ({

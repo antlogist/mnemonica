@@ -13,10 +13,10 @@
 
 <script>
 import { mapGetters } from "vuex";
-import DialogNoteToolbar from "@/components/dialog/dialog-note/DialogNoteToolbar";
-import DialogNoteSelectCat from "@/components/dialog/dialog-note/DialogNoteSelectCat";
-import DialogNoteTitle from "@/components/dialog/dialog-note/DialogNoteTitle";
-import DialogNoteExcerpt from "@/components/dialog/dialog-note/DialogNoteExcerpt";
+import DialogNoteToolbar from "@/components/notes/dialog-note/DialogNoteToolbar";
+import DialogNoteSelectCat from "@/components/notes/dialog-note/DialogNoteSelectCat";
+import DialogNoteTitle from "@/components/notes/dialog-note/DialogNoteTitle";
+import DialogNoteExcerpt from "@/components/notes/dialog-note/DialogNoteExcerpt";
 export default {
   name: "DialogNote",
   data: () => ({}),
