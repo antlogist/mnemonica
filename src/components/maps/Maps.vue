@@ -11,7 +11,7 @@
 <script>
 import MapsField from "@/components/maps/maps-field/MapsField";
 import MapsBottomNav from "@/components/maps/maps-nav/MapsBottomNav";
-import DialogParentMap from "@/components/dialog/DialogParentMap";
+import DialogParentMap from "@/components/maps/DialogParentMap";
 export default {
   name: "Maps",
   methods: {},
