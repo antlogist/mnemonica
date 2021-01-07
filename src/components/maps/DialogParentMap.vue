@@ -15,10 +15,10 @@
 
 <script>
 import { mapGetters } from "vuex";
-import DialogParentMapToolbar from "@/components/dialog/dialog-parent-map/DialogParentMapToolbar";
-import DialogParentMapTitle from "@/components/dialog/dialog-parent-map/DialogParentMapTitle";
-import DialogParentMapShape from "@/components/dialog/dialog-parent-map/DialogParentMapShape";
-import DialogParentMapColor from "@/components/dialog/dialog-parent-map/DialogParentMapColor";
+import DialogParentMapToolbar from "@/components/maps/dialog-parent-map/DialogParentMapToolbar";
+import DialogParentMapTitle from "@/components/maps/dialog-parent-map/DialogParentMapTitle";
+import DialogParentMapShape from "@/components/maps/dialog-parent-map/DialogParentMapShape";
+import DialogParentMapColor from "@/components/maps/dialog-parent-map/DialogParentMapColor";
 export default {
   name: "DialogParentMap",
   data: () => ({}),
