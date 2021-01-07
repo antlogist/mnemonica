@@ -4,10 +4,13 @@
       <DialogParentMapToolbar></DialogParentMapToolbar>
       <v-container>
         <DialogParentMapTitle></DialogParentMapTitle>
-        <v-row align="center">
-          <DialogParentMapShape></DialogParentMapShape>
+        <DialogParentMapDescr></DialogParentMapDescr>
+        <v-row>
+          <v-col cols="12" sm="4">
+            <DialogParentMapShape class="mb-3"></DialogParentMapShape>
+            <DialogParentMapColor></DialogParentMapColor>
+          </v-col>
         </v-row>
-          <DialogParentMapColor></DialogParentMapColor>
       </v-container>
     </v-card>
   </v-dialog>
@@ -19,6 +22,7 @@ import DialogParentMapToolbar from "@/components/maps/dialog-parent-map/DialogPa
 import DialogParentMapTitle from "@/components/maps/dialog-parent-map/DialogParentMapTitle";
 import DialogParentMapShape from "@/components/maps/dialog-parent-map/DialogParentMapShape";
 import DialogParentMapColor from "@/components/maps/dialog-parent-map/DialogParentMapColor";
+import DialogParentMapDescr from "@/components/maps/dialog-parent-map/DialogParentMapDescr";
 export default {
   name: "DialogParentMap",
   data: () => ({}),
@@ -29,7 +33,8 @@ export default {
     DialogParentMapToolbar,
     DialogParentMapTitle,
     DialogParentMapShape,
-    DialogParentMapColor
+    DialogParentMapColor,
+    DialogParentMapDescr
   }
 };
 </script>

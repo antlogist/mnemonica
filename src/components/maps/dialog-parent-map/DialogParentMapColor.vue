@@ -1,10 +1,14 @@
 <template>
-  <v-color-picker
-    show-swatches
-    :swatches="swatches"
-    v-if="currentParentMapId"
-    v-model="select"
-  ></v-color-picker>
+  <v-card outlined>
+    <v-card-text align="center">
+      <v-color-picker
+        show-swatches
+        :swatches="swatches"
+        v-if="currentParentMapId"
+        v-model="select"
+      ></v-color-picker>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>

@@ -17,6 +17,7 @@ class Map {
         height: "100",
         color: "#88885CFF",
         class: ["parent-map", "s-rectangle"],
+        descr: "Map Description...",
         children: []
       })
     };

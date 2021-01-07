@@ -1,7 +1,9 @@
 <template>
-  <v-col class="d-flex" cols="12" sm="4">
-    <v-select :items="shapes" v-model="select" label="Shapes"></v-select>
-  </v-col>
+  <v-card outlined>
+    <v-card-text>
+      <v-select :items="shapes" v-model="select" label="Shapes"></v-select>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>

@@ -30,6 +30,17 @@
       >
         <v-icon>mdi-menu</v-icon>
       </v-btn>
+      <v-btn
+        v-if="map.excerpt.isActivated"
+        class="add-child-btn"
+        @click="openParentDialog(map.id)"
+        color="secondary"
+        fab
+        x-small
+        dark
+      >
+        <v-icon>mdi-map</v-icon>
+      </v-btn>
     </VueDragResize>
   </div>
 </template>
@@ -90,11 +101,17 @@ export default {
 </script>
 
 <style lang="scss" scoped="true">
-.parent-menu-btn {
+.parent-menu-btn,
+.add-child-btn {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  margin-top: -15px;
-  margin-left: -10px;
+  margin-bottom: -40px;
+}
+.parent-menu-btn {
+  margin-left: 0;
+}
+.add-child-btn {
+  margin-left: 40px;
 }
 </style>
