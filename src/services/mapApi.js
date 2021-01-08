@@ -18,7 +18,7 @@ class Map {
         color: "#88885CFF",
         class: ["parent-map", "s-rectangle"],
         descr: "Map Description...",
-        children: []
+        children: {}
       })
     };
     const response = await axios.post(`/wp-json/wp/v2/map/`, data);

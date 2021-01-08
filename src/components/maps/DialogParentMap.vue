@@ -4,8 +4,10 @@
       <DialogParentMapToolbar></DialogParentMapToolbar>
       <v-container>
         <DialogParentMapTitle></DialogParentMapTitle>
-        <DialogParentMapDescr></DialogParentMapDescr>
         <v-row>
+          <v-col cols="12" sm="8">
+            <DialogParentMapDescr></DialogParentMapDescr>
+          </v-col>
           <v-col cols="12" sm="4">
             <DialogParentMapShape class="mb-3"></DialogParentMapShape>
             <DialogParentMapColor></DialogParentMapColor>

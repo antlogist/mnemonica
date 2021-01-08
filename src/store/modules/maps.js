@@ -8,7 +8,7 @@ const mapsStore = {
   state: {
     isDialogParentMapShow: false,
     currentParentMapId: 0,
-    maps: []
+    maps: {}
   },
   getters: {
     maps: ({ maps }) => maps,
@@ -24,6 +24,13 @@ const mapsStore = {
     }
   },
   actions: {
+    addChildMap({ dispatch, state }, { parentId, childId, childMap }) {
+      console.log(state);
+      console.log({ parentId, childId, childMap });
+      state.maps[parentId].excerpt.children[childId] = childMap;
+      dispatch("saveMaps", { root: false });
+      //      console.log(state.maps[parentId].excerpt.children)
+    },
     openDialogParentMap({ commit, state }, id) {
       state.currentParentMapId = Number(id);
       commit("SHOW_PARENT_DIALOG", true);

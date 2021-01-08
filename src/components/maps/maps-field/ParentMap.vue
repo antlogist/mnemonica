@@ -33,7 +33,7 @@
       <v-btn
         v-if="map.excerpt.isActivated"
         class="add-child-btn"
-        @click="openParentDialog(map.id)"
+        @click="newChildMap(map.id)"
         color="secondary"
         fab
         x-small
@@ -41,6 +41,11 @@
       >
         <v-icon>mdi-map</v-icon>
       </v-btn>
+      <VueDragResize
+        :key="childMap.id"
+        v-for="childMap in map.excerpt.children"
+        :style="{ backgroundColor: childMap.color }"
+      ></VueDragResize>
     </VueDragResize>
   </div>
 </template>
@@ -61,7 +66,7 @@ export default {
     ...mapGetters("maps", ["maps"])
   },
   methods: {
-    ...mapActions("maps", ["fetchMaps", "openDialogParentMap"]),
+    ...mapActions("maps", ["fetchMaps", "openDialogParentMap", "addChildMap"]),
     onActivated(id) {
       this.maps[id].excerpt["isActivated"] = true;
     },
@@ -89,6 +94,24 @@ export default {
     },
     openParentDialog(id) {
       this.openDialogParentMap(id);
+    },
+    newChildMap(parentId) {
+      const childId = `${parentId + (+new Date()).toString(16)}`;
+      const childMap = {
+        id: childId,
+        title: "New title",
+        descr: "Descr",
+        x: "0",
+        y: "0",
+        width: "50",
+        height: "50",
+        color: "#000000",
+        class: ["child-map"],
+        notesIds: []
+      };
+      //      this.maps[id].excerpt.children[childId] = childMap;
+      this.addChildMap({ parentId, childId, childMap });
+      //      console.log(this.maps[parentId]);
     }
   },
   mounted() {
