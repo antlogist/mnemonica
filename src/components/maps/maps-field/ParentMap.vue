@@ -33,7 +33,7 @@
       <v-btn
         v-if="map.excerpt.isActivated"
         class="add-child-btn"
-        @click="openParentDialog(map.id)"
+        @click="newChildMap(map.id)"
         color="secondary"
         fab
         x-small
@@ -61,7 +61,7 @@ export default {
     ...mapGetters("maps", ["maps"])
   },
   methods: {
-    ...mapActions("maps", ["fetchMaps", "openDialogParentMap"]),
+    ...mapActions("maps", ["fetchMaps", "openDialogParentMap", "addChildMap"]),
     onActivated(id) {
       this.maps[id].excerpt["isActivated"] = true;
     },
@@ -89,6 +89,23 @@ export default {
     },
     openParentDialog(id) {
       this.openDialogParentMap(id);
+    },
+    newChildMap(parentId) {
+      const childId = `${parentId + (+new Date()).toString(16)}`;
+      const childMap = {
+        title: "New title",
+        descr: "Descr",
+        x: "0",
+        y: "0",
+        width: "100",
+        height: "100",
+        color: "#88885CFF",
+        class: ["child-map"],
+        notesIds: []
+      };
+      //      this.maps[id].excerpt.children[childId] = childMap;
+      this.addChildMap({ parentId, childId, childMap });
+      //      console.log(this.maps[parentId]);
     }
   },
   mounted() {
