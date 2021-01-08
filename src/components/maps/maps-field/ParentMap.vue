@@ -41,6 +41,11 @@
       >
         <v-icon>mdi-map</v-icon>
       </v-btn>
+      <VueDragResize
+        :key="childMap.id"
+        v-for="childMap in map.excerpt.children"
+        :style="{ backgroundColor: childMap.color }"
+      ></VueDragResize>
     </VueDragResize>
   </div>
 </template>
@@ -93,13 +98,14 @@ export default {
     newChildMap(parentId) {
       const childId = `${parentId + (+new Date()).toString(16)}`;
       const childMap = {
+        id: childId,
         title: "New title",
         descr: "Descr",
         x: "0",
         y: "0",
-        width: "100",
-        height: "100",
-        color: "#88885CFF",
+        width: "50",
+        height: "50",
+        color: "#000000",
         class: ["child-map"],
         notesIds: []
       };
