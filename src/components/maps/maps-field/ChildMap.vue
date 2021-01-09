@@ -1,7 +1,9 @@
 <template>
   <div>
     <VueDragResize
+      :isActive="Boolean(childMap.isActivated)"
       :style="{ backgroundColor: childMap.color }"
+      :class="childMap.class"
       :x="Number(childMap.x)"
       :y="Number(childMap.y)"
       :w="Number(childMap.width)"
@@ -10,6 +12,9 @@
       v-on:dragging="resize"
       @dragstop="onDragstop()"
       @resizestop="onResizstop()"
+      @activated="onActivated()"
+      @deactivated="onDeactivated()"
+      @clicked="onClicked()"
     >
     </VueDragResize>
   </div>
@@ -64,6 +69,19 @@ export default {
       this.height = newRect.height;
       this.top = newRect.top;
       this.left = newRect.left;
+    },
+    onActivated() {
+      this.maps[this.parentId].excerpt.children[this.childMap.id][
+        "isActivated"
+      ] = true;
+    },
+    onDeactivated() {
+      this.maps[this.parentId].excerpt.children[this.childMap.id][
+        "isActivated"
+      ] = false;
+    },
+    onClicked() {
+      console.log("!!!");
     }
   },
   components: {

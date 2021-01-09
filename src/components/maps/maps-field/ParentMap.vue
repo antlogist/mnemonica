@@ -15,9 +15,9 @@
       v-on:dragging="resize"
       @dragstop="onDragstop(map.id)"
       @resizestop="onResizstop(map.id)"
-      @clicked="onClicked(map.id)"
       @activated="onActivated(map.id)"
       @deactivated="onDeactivated(map.id)"
+      @clicked="onClicked(map.id)"
     >
       <v-btn
         v-if="map.excerpt.isActivated"
