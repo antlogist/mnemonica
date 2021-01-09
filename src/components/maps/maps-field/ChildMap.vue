@@ -42,6 +42,10 @@ export default {
     childMap: {
       default: () => ({}),
       type: Object
+    },
+    parentClicked: {
+      default: () => (false),
+      type: Boolean
     }
   },
   name: "ChildMap",
@@ -99,15 +103,23 @@ export default {
       this.isResizable = false;
     },
     onClicked() {
-      console.log("!!!");
+      this.isDraggable = true;
+      this.isResizable = true;
     },
     openChildDialog() {
       console.log("openChildDialog");
     }
   },
+  watch: {
+    parentClicked() {
+      this.isDraggable = false;
+      this.isResizable = false;
+      
+    }
+  },
   components: {
     VueDragResize
-  }
+  },
 };
 </script>
 
