@@ -44,7 +44,7 @@ export default {
       type: Object
     },
     parentClicked: {
-      default: () => (false),
+      default: () => false,
       type: Boolean
     }
   },
@@ -114,12 +114,12 @@ export default {
     parentClicked() {
       this.isDraggable = false;
       this.isResizable = false;
-      
+      this.onDeactivated();
     }
   },
   components: {
     VueDragResize
-  },
+  }
 };
 </script>
 
