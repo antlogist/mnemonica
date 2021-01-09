@@ -2,7 +2,16 @@
   <div>
     <VueDragResize
       :style="{ backgroundColor: childMap.color }"
-    ></VueDragResize>
+      :x="Number(childMap.x)"
+      :y="Number(childMap.y)"
+      :w="Number(childMap.width)"
+      :h="Number(childMap.height)"
+      v-on:resizing="resize"
+      v-on:dragging="resize"
+      @dragstop="onDragstop()"
+      @resizestop="onResizstop()"
+    >
+    </VueDragResize>
   </div>
 </template>
 
@@ -11,8 +20,12 @@ import { mapGetters, mapActions } from "vuex";
 import VueDragResize from "vue-drag-resize";
 export default {
   props: {
-    childMap:{
-      default: ()=>({}),
+    parentId: {
+      default: () => "",
+      type: String
+    },
+    childMap: {
+      default: () => ({}),
       type: Object
     }
   },
@@ -29,9 +42,32 @@ export default {
   },
   methods: {
     ...mapActions("maps", ["fetchMaps", "openDialogParentMap", "addChildMap"]),
+    onDragstop() {
+      this.maps[this.parentId].excerpt.children[this.childMap.id]["x"] = String(
+        this.left
+      );
+      this.maps[this.parentId].excerpt.children[this.childMap.id]["y"] = String(
+        this.top
+      );
+    },
+    onResizstop() {
+      this.maps[this.parentId].excerpt.children[this.childMap.id][
+        "width"
+      ] = String(this.width);
+      this.maps[this.parentId].excerpt.children[this.childMap.id][
+        "height"
+      ] = String(this.height);
+      this.onDragstop();
+    },
+    resize(newRect) {
+      this.width = newRect.width;
+      this.height = newRect.height;
+      this.top = newRect.top;
+      this.left = newRect.left;
+    }
   },
   components: {
-      VueDragResize
+    VueDragResize
   }
-}
+};
 </script>

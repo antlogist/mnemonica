@@ -13,8 +13,8 @@ class Map {
         isActivated: false,
         x: "0",
         y: "0",
-        width: "100",
-        height: "100",
+        width: "500",
+        height: "500",
         color: "#88885CFF",
         class: ["parent-map", "s-rectangle"],
         descr: "Map Description...",
@@ -22,7 +22,7 @@ class Map {
         img: "",
         sound: "",
         smell: "",
-        children: {},
+        children: {}
       })
     };
     const response = await axios.post(`/wp-json/wp/v2/map/`, data);

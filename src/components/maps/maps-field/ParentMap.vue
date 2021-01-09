@@ -13,9 +13,9 @@
       :h="Number(map.excerpt.height)"
       v-on:resizing="resize"
       v-on:dragging="resize"
-      @clicked="onClicked(map.id)"
       @dragstop="onDragstop(map.id)"
       @resizestop="onResizstop(map.id)"
+      @clicked="onClicked(map.id)"
       @activated="onActivated(map.id)"
       @deactivated="onDeactivated(map.id)"
     >
@@ -41,11 +41,13 @@
       >
         <v-icon>mdi-map</v-icon>
       </v-btn>
-      <ChildMap 
-      v-for="nestedMap in map.excerpt.children" :childMap="nestedMap"
-      :key="nestedMap.id"
+      <ChildMap
+        v-for="nestedMap in map.excerpt.children"
+        :parentId="map.id"
+        :childMap="nestedMap"
+        :key="nestedMap.id"
       ></ChildMap>
-<!--
+      <!--
       <VueDragResize
         :key="childMap.id"
         v-for="childMap in map.excerpt.children"
@@ -118,7 +120,7 @@ export default {
         notesIds: [],
         img: "",
         sound: "",
-        smell: "",
+        smell: ""
       };
       //      this.maps[id].excerpt.children[childId] = childMap;
       this.addChildMap({ parentId, childId, childMap });
