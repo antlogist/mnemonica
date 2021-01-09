@@ -46,6 +46,7 @@
         :parentId="map.id"
         :childMap="nestedMap"
         :key="nestedMap.id"
+        :parentClicked="parentClicked"
       ></ChildMap>
     </VueDragResize>
   </div>
@@ -62,7 +63,8 @@ export default {
     width: 0,
     height: 0,
     top: 0,
-    left: 0
+    left: 0,
+    parentClicked: false
   }),
   computed: {
     ...mapGetters("maps", ["maps"])
@@ -76,6 +78,7 @@ export default {
       this.maps[id].excerpt["isActivated"] = false;
     },
     onClicked(id) {
+      this.parentClicked = !this.parentClicked;
       console.log("onClicked " + id);
       //      console.log(this.top, this.left);
     },
