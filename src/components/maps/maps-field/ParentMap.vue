@@ -111,16 +111,17 @@ export default {
         y: "0",
         width: "50",
         height: "50",
-        color: "#000000",
+        color: "#ffffff",
+        textAlign: "center",
+        verticalAlign: "middle",
+        fontSize: "24",
         class: ["child-map", "rectangle"],
         notesIds: [],
         img: "",
         sound: "",
         smell: ""
       };
-      //      this.maps[id].excerpt.children[childId] = childMap;
       this.addChildMap({ parentId, childId, childMap });
-      //      console.log(this.maps[parentId]);
     }
   },
   mounted() {

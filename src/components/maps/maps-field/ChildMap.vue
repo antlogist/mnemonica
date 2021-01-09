@@ -1,7 +1,7 @@
 <template>
   <VueDragResize
     :isActive="Boolean(childMap.isActivated)"
-    :style="{ backgroundColor: childMap.color }"
+    :style="{ backgroundColor: childMap.color, fontSize: childMap.fontSize + 'px' }"
     :class="childMap.class"
     :x="Number(childMap.x)"
     :y="Number(childMap.y)"
@@ -16,6 +16,7 @@
     @deactivated="onDeactivated"
     @clicked="onClicked"
   >
+   text
     <v-btn
       v-if="childMap.isActivated"
       class="child-menu-btn"
