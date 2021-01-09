@@ -1,34 +1,33 @@
 <template>
-  <div>
-    <VueDragResize
-      :isActive="Boolean(childMap.isActivated)"
-      :style="{ backgroundColor: childMap.color }"
-      :class="childMap.class"
-      :x="Number(childMap.x)"
-      :y="Number(childMap.y)"
-      :w="Number(childMap.width)"
-      :h="Number(childMap.height)"
-      v-on:resizing="resize"
-      v-on:dragging="resize"
-      @dragstop="onDragstop"
-      @resizestop="onResizstop"
-      @activated="onActivated"
-      @deactivated="onDeactivated"
-      @clicked="onClicked"
+  <VueDragResize
+    :isActive="Boolean(childMap.isActivated)"
+    :style="{ backgroundColor: childMap.color }"
+    :class="childMap.class"
+    :x="Number(childMap.x)"
+    :y="Number(childMap.y)"
+    :w="Number(childMap.width)"
+    :isResizable="isResizable"
+    :isDraggable="isDraggable"
+    v-on:resizing="resize"
+    v-on:dragging="resize"
+    @dragstop="onDragstop"
+    @resizestop="onResizstop"
+    @activated="onActivated"
+    @deactivated="onDeactivated"
+    @clicked="onClicked"
+  >
+    <v-btn
+      v-if="childMap.isActivated"
+      class="child-menu-btn"
+      @click="openChildDialog"
+      color="secondary"
+      fab
+      x-small
+      dark
     >
-      <v-btn
-        v-if="childMap.isActivated"
-        class="child-menu-btn"
-        @click="openChildDialog"
-        color="secondary"
-        fab
-        x-small
-        dark
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </VueDragResize>
-  </div>
+      <v-icon>mdi-menu</v-icon>
+    </v-btn>
+  </VueDragResize>
 </template>
 
 <script>
@@ -51,7 +50,9 @@ export default {
     width: 0,
     height: 0,
     top: 0,
-    left: 0
+    left: 0,
+    isDraggable: false,
+    isResizable: false
   }),
   computed: {
     ...mapGetters("maps", ["maps"])
@@ -85,11 +86,17 @@ export default {
       this.maps[this.parentId].excerpt.children[this.childMap.id][
         "isActivated"
       ] = true;
+
+      this.isDraggable = true;
+      this.isResizable = true;
+      console.log("isResizable" + this.isResizable);
     },
     onDeactivated() {
       this.maps[this.parentId].excerpt.children[this.childMap.id][
         "isActivated"
       ] = false;
+      this.isDraggable = false;
+      this.isResizable = false;
     },
     onClicked() {
       console.log("!!!");
