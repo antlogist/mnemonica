@@ -13,11 +13,11 @@
       :h="Number(map.excerpt.height)"
       v-on:resizing="resize"
       v-on:dragging="resize"
-      @clicked="onClicked(map.id)"
       @dragstop="onDragstop(map.id)"
       @resizestop="onResizstop(map.id)"
       @activated="onActivated(map.id)"
       @deactivated="onDeactivated(map.id)"
+      @clicked="onClicked(map.id)"
     >
       <v-btn
         v-if="map.excerpt.isActivated"
@@ -41,11 +41,12 @@
       >
         <v-icon>mdi-map</v-icon>
       </v-btn>
-      <VueDragResize
-        :key="childMap.id"
-        v-for="childMap in map.excerpt.children"
-        :style="{ backgroundColor: childMap.color }"
-      ></VueDragResize>
+      <ChildMap
+        v-for="nestedMap in map.excerpt.children"
+        :parentId="map.id"
+        :childMap="nestedMap"
+        :key="nestedMap.id"
+      ></ChildMap>
     </VueDragResize>
   </div>
 </template>
@@ -53,6 +54,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import VueDragResize from "vue-drag-resize";
+import ChildMap from "@/components/maps/maps-field/ChildMap";
 export default {
   name: "ParentMap",
   data: () => ({
@@ -99,15 +101,19 @@ export default {
       const childId = `${parentId + (+new Date()).toString(16)}`;
       const childMap = {
         id: childId,
+        isActivated: false,
         title: "New title",
-        descr: "Descr",
+        descr: "Description",
         x: "0",
         y: "0",
         width: "50",
         height: "50",
         color: "#000000",
-        class: ["child-map"],
-        notesIds: []
+        class: ["child-map", "rectangle"],
+        notesIds: [],
+        img: "",
+        sound: "",
+        smell: ""
       };
       //      this.maps[id].excerpt.children[childId] = childMap;
       this.addChildMap({ parentId, childId, childMap });
@@ -118,7 +124,8 @@ export default {
     this.fetchMaps();
   },
   components: {
-    VueDragResize
+    VueDragResize,
+    ChildMap
   }
 };
 </script>

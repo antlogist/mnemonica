@@ -13,11 +13,15 @@ class Map {
         isActivated: false,
         x: "0",
         y: "0",
-        width: "100",
-        height: "100",
+        width: "500",
+        height: "500",
         color: "#88885CFF",
         class: ["parent-map", "s-rectangle"],
         descr: "Map Description...",
+        notesIds: [],
+        img: "",
+        sound: "",
+        smell: "",
         children: {}
       })
     };
