@@ -47,13 +47,14 @@
         :childMap="nestedMap"
         :key="nestedMap.id"
       ></ChildMap>
-    </VueDragResize>
+      </VueDragResize>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
 import VueDragResize from "vue-drag-resize";
+//import VueDragResize from "@/plugins/vue-drag-resize";
 import ChildMap from "@/components/maps/maps-field/ChildMap";
 export default {
   name: "ParentMap",
