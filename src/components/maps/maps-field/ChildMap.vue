@@ -10,12 +10,23 @@
       :h="Number(childMap.height)"
       v-on:resizing="resize"
       v-on:dragging="resize"
-      @dragstop="onDragstop()"
-      @resizestop="onResizstop()"
-      @activated="onActivated()"
-      @deactivated="onDeactivated()"
-      @clicked="onClicked()"
+      @dragstop="onDragstop"
+      @resizestop="onResizstop"
+      @activated="onActivated"
+      @deactivated="onDeactivated"
+      @clicked="onClicked"
     >
+      <v-btn
+        v-if="childMap.isActivated"
+        class="child-menu-btn"
+        @click="openChildDialog"
+        color="secondary"
+        fab
+        x-small
+        dark
+      >
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
     </VueDragResize>
   </div>
 </template>
@@ -82,6 +93,9 @@ export default {
     },
     onClicked() {
       console.log("!!!");
+    },
+    openChildDialog() {
+      console.log("openChildDialog");
     }
   },
   components: {
@@ -89,3 +103,15 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped="true">
+.child-menu-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: -40px;
+}
+.child-menu-btn {
+  margin-left: 0;
+}
+</style>

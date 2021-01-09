@@ -47,13 +47,6 @@
         :childMap="nestedMap"
         :key="nestedMap.id"
       ></ChildMap>
-      <!--
-      <VueDragResize
-        :key="childMap.id"
-        v-for="childMap in map.excerpt.children"
-        :style="{ backgroundColor: childMap.color }"
-      ></VueDragResize>
--->
     </VueDragResize>
   </div>
 </template>
