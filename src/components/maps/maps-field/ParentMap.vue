@@ -41,6 +41,16 @@
       >
         <v-icon>mdi-map</v-icon>
       </v-btn>
+      <v-btn
+        v-if="map.excerpt.isActivated"
+        class="delete-parent-btn"
+        color="secondary"
+        fab
+        x-small
+        dark
+      >
+        <v-icon>mdi-delete</v-icon>
+      </v-btn>
       <ChildMap
         v-for="nestedMap in map.excerpt.children"
         :parentId="map.id"
@@ -111,16 +121,20 @@ export default {
         y: "0",
         width: "50",
         height: "50",
-        color: "#000000",
+        backgroundColor: "#ffffff",
+        textAlign: "center",
+        verticalAlign: "middle",
+        fontSize: "24",
+        fontColor: "#000000",
+        otherStyles: [],
+        otherClasses: [],
         class: ["child-map", "rectangle"],
         notesIds: [],
         img: "",
         sound: "",
         smell: ""
       };
-      //      this.maps[id].excerpt.children[childId] = childMap;
       this.addChildMap({ parentId, childId, childMap });
-      //      console.log(this.maps[parentId]);
     }
   },
   mounted() {
@@ -135,7 +149,8 @@ export default {
 
 <style lang="scss" scoped="true">
 .parent-menu-btn,
-.add-child-btn {
+.add-child-btn,
+.delete-parent-btn {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -146,5 +161,8 @@ export default {
 }
 .add-child-btn {
   margin-left: 40px;
+}
+.delete-parent-btn {
+  margin-left: 80px;
 }
 </style>

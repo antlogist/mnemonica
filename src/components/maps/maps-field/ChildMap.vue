@@ -1,7 +1,10 @@
 <template>
   <VueDragResize
     :isActive="Boolean(childMap.isActivated)"
-    :style="{ backgroundColor: childMap.color }"
+    :style="{
+      backgroundColor: childMap.backgroundColor,
+      fontSize: childMap.fontSize + 'px'
+    }"
     :class="childMap.class"
     :x="Number(childMap.x)"
     :y="Number(childMap.y)"
@@ -16,6 +19,7 @@
     @deactivated="onDeactivated"
     @clicked="onClicked"
   >
+    text
     <v-btn
       v-if="childMap.isActivated"
       class="child-menu-btn"
@@ -26,6 +30,17 @@
       dark
     >
       <v-icon>mdi-menu</v-icon>
+    </v-btn>
+    <v-btn
+      v-if="childMap.isActivated"
+      class="child-delete-btn"
+      @click="deleteChildMap"
+      color="secondary"
+      fab
+      x-small
+      dark
+    >
+      <v-icon>mdi-delete</v-icon>
     </v-btn>
   </VueDragResize>
 </template>
@@ -108,6 +123,9 @@ export default {
     },
     openChildDialog() {
       console.log("openChildDialog");
+    },
+    deleteChildMap() {
+      console.log("delete");
     }
   },
   watch: {
@@ -124,7 +142,8 @@ export default {
 </script>
 
 <style lang="scss" scoped="true">
-.child-menu-btn {
+.child-menu-btn,
+.child-delete-btn {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -132,5 +151,8 @@ export default {
 }
 .child-menu-btn {
   margin-left: 0;
+}
+.child-delete-btn {
+  margin-left: 40px;
 }
 </style>
