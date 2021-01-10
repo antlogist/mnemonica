@@ -1,7 +1,7 @@
 import mapApi from "@/services/mapApi";
 import mutations from "@/store/mutations";
 
-const { MAPS, SHOW_PARENT_DIALOG, SHOW_CHILD_DIALOG} = mutations;
+const { MAPS, SHOW_PARENT_DIALOG, SHOW_CHILD_DIALOG } = mutations;
 
 const mapsStore = {
   namespaced: true,
@@ -49,7 +49,7 @@ const mapsStore = {
       state.currentChildMapId = Number(id);
       commit("SHOW_CHILD_DIALOG", true);
     },
-    closeDialogChildtMap({ commit, state }) {
+    closeDialogChildMap({ commit, state }) {
       state.currentChildMapId = "";
       commit("SHOW_CHILD_DIALOG", false);
     },
