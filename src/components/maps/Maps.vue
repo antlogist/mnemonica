@@ -3,6 +3,9 @@
     <template>
       <DialogParentMap></DialogParentMap>
     </template>
+    <template>
+      <DialogChildMap></DialogChildMap>
+    </template>
     <MapsField></MapsField>
     <MapsBottomNav></MapsBottomNav>
   </div>
@@ -12,6 +15,7 @@
 import MapsField from "@/components/maps/maps-field/MapsField";
 import MapsBottomNav from "@/components/maps/maps-nav/MapsBottomNav";
 import DialogParentMap from "@/components/maps/DialogParentMap";
+import DialogChildMap from "@/components/maps/DialogChildMap";
 export default {
   name: "Maps",
   methods: {},
@@ -19,7 +23,8 @@ export default {
   components: {
     MapsField,
     MapsBottomNav,
-    DialogParentMap
+    DialogParentMap,
+    DialogChildMap
   }
 };
 </script>

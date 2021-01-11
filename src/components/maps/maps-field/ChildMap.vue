@@ -23,7 +23,7 @@
     <v-btn
       v-if="childMap.isActivated"
       class="child-menu-btn"
-      @click="openChildDialog"
+      @click="openChildDialog(childMap.id)"
       color="secondary"
       fab
       x-small
@@ -77,7 +77,7 @@ export default {
     ...mapGetters("maps", ["maps"])
   },
   methods: {
-    ...mapActions("maps", ["fetchMaps", "openDialogParentMap", "addChildMap"]),
+    ...mapActions("maps", ["fetchMaps", "openDialogChildMap", "addChildMap"]),
     onDragstop() {
       this.maps[this.parentId].excerpt.children[this.childMap.id]["x"] = String(
         this.left
@@ -121,8 +121,9 @@ export default {
       this.isDraggable = true;
       this.isResizable = true;
     },
-    openChildDialog() {
+    openChildDialog(id) {
       console.log("openChildDialog");
+      this.openDialogChildMap(id);
     },
     deleteChildMap() {
       console.log("delete");
