@@ -128,6 +128,7 @@ export default {
         fontColor: "#000000",
         otherStyles: [],
         otherClasses: [],
+        other: [],
         class: ["child-map", "rectangle"],
         notesIds: [],
         img: "",
