@@ -4,7 +4,7 @@
       <v-btn icon dark @click="closeDialog">
         <v-icon>mdi-close</v-icon>
       </v-btn>
-      <v-toolbar-title>Parent Map</v-toolbar-title>
+      <v-toolbar-title>Child Map</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn icon @click="save" dark text>

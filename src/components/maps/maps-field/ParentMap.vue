@@ -111,7 +111,7 @@ export default {
       this.openDialogParentMap(id);
     },
     newChildMap(parentId) {
-      const childId = `${parentId + (+new Date()).toString(16)}`;
+      const childId = `${Date.now()}`;
       const childMap = {
         id: childId,
         isActivated: false,

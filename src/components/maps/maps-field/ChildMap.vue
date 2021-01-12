@@ -19,7 +19,7 @@
     @deactivated="onDeactivated"
     @clicked="onClicked"
   >
-    text
+    <div v-html="childMap.descr"></div>
     <v-btn
       v-if="childMap.isActivated"
       class="child-menu-btn"
@@ -121,9 +121,9 @@ export default {
       this.isDraggable = true;
       this.isResizable = true;
     },
-    openChildDialog(id) {
-      console.log("openChildDialog");
-      this.openDialogChildMap(id);
+    openChildDialog(childId) {
+      console.log("openChildDialog", childId);
+      this.openDialogChildMap({ childId, parentId: this.parentId });
     },
     deleteChildMap() {
       console.log("delete");
