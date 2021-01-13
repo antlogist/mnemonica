@@ -1,7 +1,7 @@
 <template>
   <v-card outlined>
     <v-card-text>
-      <v-select :items="sizes" v-model="select" label="Font Size"></v-select>
+      <v-select :items="alignes" v-model="select" label="Text Align"></v-select>
     </v-card-text>
   </v-card>
 </template>
@@ -9,9 +9,9 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "DialogChildMapFontSize",
+  name: "DialogChildMapTextAlign",
   data: () => ({
-    sizes: [...Array(30).keys()].map(String)
+    alignes: ["center", "left", "right"]
   }),
   computed: {
     ...mapGetters("maps", ["maps", "currentChildMapId", "currentParentMapId"]),
@@ -20,13 +20,13 @@ export default {
         return this.currentChildMapId
           ? this.maps[this.currentParentMapId]["excerpt"]["children"][
               this.currentChildMapId
-            ]["fontSize"]
+            ]["textAlign"]
           : "";
       },
       set(item) {
         this.maps[this.currentParentMapId]["excerpt"]["children"][
           this.currentChildMapId
-        ]["fontSize"] = item;
+        ]["textAlign"] = item;
       }
     }
   }

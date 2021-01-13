@@ -19,7 +19,10 @@
     @deactivated="onDeactivated"
     @clicked="onClicked"
   >
-    <div v-html="childMap.descr" :style="{ fontSize: childMap.fontSize }"></div>
+    <div
+      v-html="childMap.descr"
+      :style="{ fontSize: childMap.fontSize, textAlign: childMap.textAlign }"
+    ></div>
     <v-btn
       v-if="childMap.isActivated"
       class="child-menu-btn"
