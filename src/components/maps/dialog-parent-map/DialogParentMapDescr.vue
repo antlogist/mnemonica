@@ -1,6 +1,6 @@
 <template>
   <v-card outlined>
-    <v-edit-dialog persistent :return-value.sync="descr" large>
+    <v-edit-dialog large persistent :return-value.sync="descr">
       <v-card-text>
         <div v-html="descr"></div>
       </v-card-text>

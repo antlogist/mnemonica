@@ -43,8 +43,8 @@ const mapsStore = {
       commit("SHOW_PARENT_DIALOG", true);
     },
     closeDialogParentMap({ commit, state }) {
-      state.currentParentMapId = "";
       commit("SHOW_PARENT_DIALOG", false);
+      state.currentParentMapId = "";
     },
     openDialogChildMap({ commit, state }, { childId, parentId }) {
       state.currentParentMapId = Number(parentId);
@@ -52,8 +52,8 @@ const mapsStore = {
       commit("SHOW_CHILD_DIALOG", true);
     },
     closeDialogChildMap({ commit, state }) {
-      state.currentChildMapId = "";
       commit("SHOW_CHILD_DIALOG", false);
+      state.currentChildMapId = "";
     },
     async fetchMaps({ commit, dispatch }) {
       try {
