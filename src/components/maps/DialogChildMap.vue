@@ -9,6 +9,7 @@
           </v-col>
           <v-col cols="12" sm="4">
             <DialogChildMapShape></DialogChildMapShape>
+            <DialogChildMapFontSize></DialogChildMapFontSize>
           </v-col>
         </v-row>
       </v-container>
@@ -21,6 +22,7 @@ import { mapGetters } from "vuex";
 import DialogChildMapToolbar from "@/components/maps/dialog-child-map/DialogChildMapToolbar";
 import DialogChildMapDescr from "@/components/maps/dialog-child-map/DialogChildMapDescr";
 import DialogChildMapShape from "@/components/maps/dialog-child-map/DialogChildMapShape";
+import DialogChildMapFontSize from "@/components/maps/dialog-child-map/DialogChildMapFontSize";
 export default {
   name: "DialogChildMap",
   data: () => ({}),
@@ -30,7 +32,8 @@ export default {
   components: {
     DialogChildMapToolbar,
     DialogChildMapDescr,
-    DialogChildMapShape
+    DialogChildMapShape,
+    DialogChildMapFontSize
   }
 };
 </script>

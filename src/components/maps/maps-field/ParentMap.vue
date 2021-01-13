@@ -129,7 +129,7 @@ export default {
         otherStyles: [],
         otherClasses: [],
         other: [],
-        class: ["child-map", "rectangle"],
+        class: ["child-map", "s-rectangle"],
         notesIds: [],
         img: "",
         sound: "",
