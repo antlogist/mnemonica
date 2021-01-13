@@ -13,7 +13,7 @@
   export default {
     name: "DialogChildMapFontSize",
     data: () => ({
-      sizes: ["5", "14", "24"]
+      sizes: [...Array(30).keys()].map(String)
     }),
     computed: {
       ...mapGetters("maps", ["maps", "currentChildMapId", "currentParentMapId"]),
