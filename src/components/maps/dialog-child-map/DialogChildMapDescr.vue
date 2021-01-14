@@ -27,7 +27,6 @@ export default {
           : "";
       },
       set(excerpt) {
-        console.log(excerpt);
         this.maps[this.currentParentMapId]["excerpt"]["children"][
           this.currentChildMapId
         ]["descr"] = excerpt;
