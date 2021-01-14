@@ -22,7 +22,14 @@
   >
     <div
       v-html="childMap.descr"
-      :style="{ fontSize: childMap.fontSize, textAlign: childMap.textAlign }"
+      :style="{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        fontSize: childMap.fontSize,
+        textAlign: childMap.textAlign
+      }"
     ></div>
     <v-btn
       v-if="childMap.isActivated"

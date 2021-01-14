@@ -15,7 +15,9 @@
 import { mapGetters } from "vuex";
 export default {
   name: "DialogChildMapDescr",
-  data: () => ({}),
+  data: () => ({
+    mapDescr: ""
+  }),
   computed: {
     ...mapGetters("maps", ["maps", "currentChildMapId", "currentParentMapId"]),
     descr: {
