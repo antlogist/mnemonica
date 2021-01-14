@@ -16,7 +16,8 @@ const mapsStore = {
     maps: ({ maps }) => maps,
     isDialogParentMapShow: ({ isDialogParentMapShow }) => isDialogParentMapShow,
     isDialogChildMapShow: ({ isDialogChildMapShow }) => isDialogChildMapShow,
-    currentParentMapId: ({ currentParentMapId }) => currentParentMapId
+    currentParentMapId: ({ currentParentMapId }) => currentParentMapId,
+    currentChildMapId: ({ currentChildMapId }) => currentChildMapId
   },
   mutations: {
     [MAPS](state, value) {
@@ -42,16 +43,17 @@ const mapsStore = {
       commit("SHOW_PARENT_DIALOG", true);
     },
     closeDialogParentMap({ commit, state }) {
-      state.currentParentMapId = "";
       commit("SHOW_PARENT_DIALOG", false);
+      state.currentParentMapId = "";
     },
-    openDialogChildMap({ commit, state }, id) {
-      state.currentChildMapId = Number(id);
+    openDialogChildMap({ commit, state }, { childId, parentId }) {
+      state.currentParentMapId = Number(parentId);
+      state.currentChildMapId = Number(childId);
       commit("SHOW_CHILD_DIALOG", true);
     },
     closeDialogChildMap({ commit, state }) {
-      state.currentChildMapId = "";
       commit("SHOW_CHILD_DIALOG", false);
+      state.currentChildMapId = "";
     },
     async fetchMaps({ commit, dispatch }) {
       try {

@@ -3,10 +3,16 @@
     <DialogChildMapToolbar></DialogChildMapToolbar>
     <v-card>
       <v-container>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab architecto
-        delectus dolores reprehenderit tempora in facere sint modi velit
-        corrupti praesentium earum deleniti minima, minus similique rerum quidem
-        accusamus officia!
+        <v-row>
+          <v-col cols="12" sm="8">
+            <DialogChildMapDescr></DialogChildMapDescr>
+          </v-col>
+          <v-col cols="12" sm="4">
+            <DialogChildMapShape></DialogChildMapShape>
+            <DialogChildMapFontSize></DialogChildMapFontSize>
+            <DialogChildMapTextAlign></DialogChildMapTextAlign>
+          </v-col>
+        </v-row>
       </v-container>
     </v-card>
   </v-dialog>
@@ -15,6 +21,10 @@
 <script>
 import { mapGetters } from "vuex";
 import DialogChildMapToolbar from "@/components/maps/dialog-child-map/DialogChildMapToolbar";
+import DialogChildMapDescr from "@/components/maps/dialog-child-map/DialogChildMapDescr";
+import DialogChildMapShape from "@/components/maps/dialog-child-map/DialogChildMapShape";
+import DialogChildMapFontSize from "@/components/maps/dialog-child-map/DialogChildMapFontSize";
+import DialogChildMapTextAlign from "@/components/maps/dialog-child-map/DialogChildMapTextAlign";
 export default {
   name: "DialogChildMap",
   data: () => ({}),
@@ -22,7 +32,11 @@ export default {
     ...mapGetters("maps", ["isDialogChildMapShow"])
   },
   components: {
-    DialogChildMapToolbar
+    DialogChildMapToolbar,
+    DialogChildMapDescr,
+    DialogChildMapShape,
+    DialogChildMapFontSize,
+    DialogChildMapTextAlign
   }
 };
 </script>
