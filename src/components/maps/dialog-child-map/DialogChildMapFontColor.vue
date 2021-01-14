@@ -1,5 +1,8 @@
 <template>
   <v-card outlined>
+    <v-card-title>
+      Font Color
+    </v-card-title>
     <v-card-text align="center">
       <v-color-picker
         show-swatches
@@ -14,7 +17,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "DialogChildMapColor",
+  name: "DialogChildMapFontColor",
   data: () => ({
     swatches: [
       ["#FF0000", "#AA0000", "#550000"],
@@ -30,13 +33,13 @@ export default {
       get() {
         const color = this.maps[this.currentParentMapId]["excerpt"]["children"][
           this.currentChildMapId
-        ]["backgroundColor"];
+        ]["fontColor"];
         return color;
       },
       set(color) {
         this.maps[this.currentParentMapId]["excerpt"]["children"][
           this.currentChildMapId
-        ]["backgroundColor"] = color;
+        ]["fontColor"] = color;
       }
     }
   }

@@ -3,7 +3,8 @@
     :isActive="Boolean(childMap.isActivated)"
     :style="{
       backgroundColor: childMap.backgroundColor,
-      fontSize: childMap.fontSize + 'px'
+      fontSize: childMap.fontSize + 'px',
+      color: childMap.fontColor
     }"
     :class="childMap.class"
     :x="Number(childMap.x)"
