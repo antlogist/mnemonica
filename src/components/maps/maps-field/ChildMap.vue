@@ -4,7 +4,9 @@
     :style="{
       backgroundColor: childMap.backgroundColor,
       fontSize: childMap.fontSize + 'px',
-      color: childMap.fontColor
+      color: childMap.fontColor,
+      display: 'flex',
+      alignItems: 'center'
     }"
     :class="childMap.class"
     :x="Number(childMap.x)"
@@ -24,8 +26,6 @@
       v-html="childMap.descr"
       :style="{
         width: '100%',
-        height: '100%',
-        display: 'flex',
         alignItems: 'center',
         fontSize: childMap.fontSize,
         textAlign: childMap.textAlign
