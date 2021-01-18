@@ -53,6 +53,17 @@
     >
       <v-icon>mdi-delete</v-icon>
     </v-btn>
+    <v-btn
+      v-if="childMap.isActivated"
+      class="child-edit-text-btn"
+      @click="editTextChildMap"
+      color="secondary"
+      fab
+      x-small
+      dark
+    >
+      <v-icon>mdi-pen</v-icon>
+    </v-btn>
   </VueDragResize>
 </template>
 
@@ -138,6 +149,9 @@ export default {
     },
     deleteChildMap() {
       console.log("delete");
+    },
+    editTextChildMap() {
+      console.log("edit text");
     }
   },
   watch: {
@@ -155,7 +169,8 @@ export default {
 
 <style lang="scss" scoped="true">
 .child-menu-btn,
-.child-delete-btn {
+.child-delete-btn,
+.child-edit-text-btn {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -166,5 +181,8 @@ export default {
 }
 .child-delete-btn {
   margin-left: 40px;
+}
+.child-edit-text-btn {
+  margin-left: 80px;
 }
 </style>
