@@ -14,7 +14,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "DialogChildMapDescr",
+  name: "DialogChildMapEditTextDescr",
   data: () => ({
     mapDescr: ""
   }),
