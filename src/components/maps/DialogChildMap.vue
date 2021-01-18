@@ -16,8 +16,8 @@
             </v-row>
           </v-col>
           <v-col cols="12" sm="4">
-            <DialogChildMapShape></DialogChildMapShape>
-            <DialogChildMapFontSize></DialogChildMapFontSize>
+            <DialogChildMapShape class="mb-3"></DialogChildMapShape>
+            <DialogChildMapFontSize class="mb-3"></DialogChildMapFontSize>
             <DialogChildMapTextAlign></DialogChildMapTextAlign>
           </v-col>
         </v-row>
