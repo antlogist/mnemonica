@@ -1,13 +1,19 @@
 import mapApi from "@/services/mapApi";
 import mutations from "@/store/mutations";
 
-const { MAPS, SHOW_PARENT_DIALOG, SHOW_CHILD_DIALOG } = mutations;
+const {
+  MAPS,
+  SHOW_PARENT_DIALOG,
+  SHOW_CHILD_DIALOG,
+  SHOW_CHILD_DIALOG_EDIT_TEXT
+} = mutations;
 
 const mapsStore = {
   namespaced: true,
   state: {
     isDialogParentMapShow: false,
     isDialogChildMapShow: false,
+    isDialogChildMapEditTextShow: false,
     currentParentMapId: 0,
     currentChildMapId: 0,
     maps: {}
@@ -16,6 +22,8 @@ const mapsStore = {
     maps: ({ maps }) => maps,
     isDialogParentMapShow: ({ isDialogParentMapShow }) => isDialogParentMapShow,
     isDialogChildMapShow: ({ isDialogChildMapShow }) => isDialogChildMapShow,
+    isDialogChildMapEditTextShow: ({ isDialogChildMapEditTextShow }) =>
+      isDialogChildMapEditTextShow,
     currentParentMapId: ({ currentParentMapId }) => currentParentMapId,
     currentChildMapId: ({ currentChildMapId }) => currentChildMapId
   },
@@ -28,6 +36,9 @@ const mapsStore = {
     },
     [SHOW_CHILD_DIALOG](state, bool) {
       state.isDialogChildMapShow = bool;
+    },
+    [SHOW_CHILD_DIALOG_EDIT_TEXT](state, bool) {
+      state.isDialogChildMapEditTextShow = bool;
     }
   },
   actions: {
@@ -53,6 +64,15 @@ const mapsStore = {
     },
     closeDialogChildMap({ commit, state }) {
       commit("SHOW_CHILD_DIALOG", false);
+      state.currentChildMapId = "";
+    },
+    openDialogChildMapEditText({ commit, state }, { childId, parentId }) {
+      state.currentParentMapId = Number(parentId);
+      state.currentChildMapId = Number(childId);
+      commit("SHOW_CHILD_DIALOG_EDIT_TEXT", true);
+    },
+    closeDialogChildMapEditText({ commit, state }) {
+      commit("SHOW_CHILD_DIALOG_EDIT_TEXT", false);
       state.currentChildMapId = "";
     },
     async fetchMaps({ commit, dispatch }) {

@@ -53,6 +53,17 @@
     >
       <v-icon>mdi-delete</v-icon>
     </v-btn>
+    <v-btn
+      v-if="childMap.isActivated"
+      class="child-edit-text-btn"
+      @click="openChildDialogTextEdit(childMap.id)"
+      color="secondary"
+      fab
+      x-small
+      dark
+    >
+      <v-icon>mdi-pen</v-icon>
+    </v-btn>
   </VueDragResize>
 </template>
 
@@ -88,7 +99,12 @@ export default {
     ...mapGetters("maps", ["maps"])
   },
   methods: {
-    ...mapActions("maps", ["fetchMaps", "openDialogChildMap", "addChildMap"]),
+    ...mapActions("maps", [
+      "fetchMaps",
+      "openDialogChildMap",
+      "openDialogChildMapEditText",
+      "addChildMap"
+    ]),
     onDragstop() {
       this.maps[this.parentId].excerpt.children[this.childMap.id]["x"] = String(
         this.left
@@ -138,6 +154,10 @@ export default {
     },
     deleteChildMap() {
       console.log("delete");
+    },
+    openChildDialogTextEdit(childId) {
+      console.log("openChildDialogTextEdit", childId);
+      this.openDialogChildMapEditText({ childId, parentId: this.parentId });
     }
   },
   watch: {
@@ -155,7 +175,8 @@ export default {
 
 <style lang="scss" scoped="true">
 .child-menu-btn,
-.child-delete-btn {
+.child-delete-btn,
+.child-edit-text-btn {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -166,5 +187,8 @@ export default {
 }
 .child-delete-btn {
   margin-left: 40px;
+}
+.child-edit-text-btn {
+  margin-left: 80px;
 }
 </style>
