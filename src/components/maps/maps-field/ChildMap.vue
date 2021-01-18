@@ -56,7 +56,7 @@
     <v-btn
       v-if="childMap.isActivated"
       class="child-edit-text-btn"
-      @click="editTextChildMap"
+      @click="openChildDialogTextEdit(childMap.id)"
       color="secondary"
       fab
       x-small
@@ -99,7 +99,12 @@ export default {
     ...mapGetters("maps", ["maps"])
   },
   methods: {
-    ...mapActions("maps", ["fetchMaps", "openDialogChildMap", "addChildMap"]),
+    ...mapActions("maps", [
+      "fetchMaps",
+      "openDialogChildMap",
+      "openDialogChildMapEditText",
+      "addChildMap"
+    ]),
     onDragstop() {
       this.maps[this.parentId].excerpt.children[this.childMap.id]["x"] = String(
         this.left
@@ -150,8 +155,9 @@ export default {
     deleteChildMap() {
       console.log("delete");
     },
-    editTextChildMap() {
-      console.log("edit text");
+    openChildDialogTextEdit(childId) {
+      console.log("openChildDialogTextEdit", childId);
+      this.openDialogChildMapEditText({ childId, parentId: this.parentId });
     }
   },
   watch: {
