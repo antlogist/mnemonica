@@ -1,6 +1,8 @@
 <template>
   <div class="maps-wrapper">
-    <ParentMap></ParentMap>
+    <div class="scale-wrapper">
+      <ParentMap></ParentMap>
+    </div>
   </div>
 </template>
 
