@@ -4,11 +4,11 @@
       <span>New</span>
       <v-icon>mdi-plus</v-icon>
     </v-btn>
-    <v-btn @click="scale">
+    <v-btn @click="zoomIn">
       <span>Zoom-in</span>
       <v-icon>mdi-magnify-plus-outline</v-icon>
     </v-btn>
-    <v-btn @click="scale">
+    <v-btn @click="zoomOut">
       <span>Zoom-out</span>
       <v-icon>mdi-magnify-minus-outline</v-icon>
     </v-btn>
@@ -28,8 +28,11 @@ export default {
     newMap() {
       this.createMap();
     },
-    scale() {
-      console.log("scale");
+    zoomIn() {
+      console.log("zoomIn");
+    },
+    zoomOut() {
+      console.log("zoomOut");
     },
     save() {
       this.saveMaps();

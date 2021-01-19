@@ -7,6 +7,7 @@ import note from "./modules/note";
 import loader from "./modules/loader";
 import auth from "./modules/auth";
 import notification from "./modules/notification";
+import zoom from "./modules/zoom";
 
 Vue.use(Vuex);
 
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     maps,
     notes,
     note,
-    notification
+    notification,
+    zoom
   }
 });
