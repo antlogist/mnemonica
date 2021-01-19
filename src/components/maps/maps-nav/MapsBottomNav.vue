@@ -5,8 +5,12 @@
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-btn @click="scale">
-      <span>Scale</span>
-      <v-icon>mdi-ruler</v-icon>
+      <span>Zoom-in</span>
+      <v-icon>mdi-magnify-plus-outline</v-icon>
+    </v-btn>
+    <v-btn @click="scale">
+      <span>Zoom-out</span>
+      <v-icon>mdi-magnify-minus-outline</v-icon>
     </v-btn>
     <v-btn @click="save">
       <span>Save</span>
