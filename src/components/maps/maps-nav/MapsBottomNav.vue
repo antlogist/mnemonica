@@ -16,22 +16,29 @@
       <span>Save</span>
       <v-icon>mdi-content-save</v-icon>
     </v-btn>
+    {{ zoomMap }}
   </v-bottom-navigation>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "MapsBottomNav",
+  computed: {
+    ...mapGetters("zoom", ["zoomMap"])
+  },
   methods: {
     ...mapActions("maps", ["fetchMaps", "createMap", "saveMaps"]),
+    ...mapActions("zoom", ["zoomInMap", "zoomOutMap"]),
     newMap() {
       this.createMap();
     },
     zoomIn() {
+      this.zoomInMap();
       console.log("zoomIn");
     },
     zoomOut() {
+      this.zoomOutMap();
       console.log("zoomOut");
     },
     save() {

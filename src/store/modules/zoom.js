@@ -5,24 +5,24 @@ const { ZOOM_IN, ZOOM_OUT } = mutations;
 const zoomStore = {
   namespaced: true,
   state: {
-    zoom: 1
+    zoomMap: 1
   },
   getters: {
-    zoom: ({ zoom }) => zoom
+    zoomMap: ({ zoomMap }) => zoomMap
   },
   mutations: {
     [ZOOM_IN](state) {
-      state.zoom++;
+      state.zoomMap++;
     },
     [ZOOM_OUT](state) {
-      state.zoom--;
+      state.zoomMap--;
     }
   },
   actions: {
-    zoomIn({ commit }) {
+    zoomInMap({ commit }) {
       commit(ZOOM_IN);
     },
-    zoomOut({ commit }) {
+    zoomOutMap({ commit }) {
       commit(ZOOM_OUT);
     }
   }
