@@ -11,8 +11,27 @@ import { mapGetters } from "vuex";
 import ParentMap from "@/components/maps/maps-field/ParentMap";
 export default {
   name: "MapsField",
+  data: () => ({
+    height: 0,
+  }),
   computed: {
-    ...mapGetters("zoom", ["zoomMap"])
+    ...mapGetters("zoom", ["zoomMap"]),
+  },
+  mounted:()=>{
+    const intViewportHeight = window.innerHeight;
+    const appBar = document.querySelector(".v-app-bar");
+    const appBarHeight = appBar.offsetHeight;
+    const systemBar = document.querySelector(".v-system-bar");
+    const systemBarHeight = systemBar.offsetHeight;
+    const bottomNav = document.querySelector(".v-bottom-navigation");
+    const bottomNavHeight = bottomNav.offsetHeight;
+    const mapsWrapperHeight = intViewportHeight - appBarHeight - bottomNavHeight - systemBarHeight;
+    
+    const mapsWrapper = document.querySelector(".maps-wrapper");
+    mapsWrapper.style.height = mapsWrapperHeight + 'px';
+    console.log(mapsWrapper);
+    
+    console.log({mapsWrapperHeight, appBarHeight, bottomNavHeight});
   },
   components: {
     ParentMap
@@ -25,7 +44,7 @@ export default {
   position: relative;
   background-color: coral;
   width: 100%;
-  height: 100vh;
+/*  height: 100vh;*/
   overflow: scroll;
 }
 .s-circle {
