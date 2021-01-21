@@ -16,7 +16,6 @@
       <span>Save</span>
       <v-icon>mdi-content-save</v-icon>
     </v-btn>
-    {{ zoomMap }}
   </v-bottom-navigation>
 </template>
 
