@@ -1,16 +1,19 @@
 <template>
   <div class="maps-wrapper">
-    <div class="scale-wrapper">
+    <div class="scale-wrapper" :style="{ transform: 'scale(' + zoomMap + ')' }">
       <ParentMap></ParentMap>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import ParentMap from "@/components/maps/maps-field/ParentMap";
-
 export default {
   name: "MapsField",
+  computed: {
+    ...mapGetters("zoom", ["zoomMap"])
+  },
   components: {
     ParentMap
   }
