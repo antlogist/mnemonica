@@ -5,7 +5,7 @@ const { ZOOM_IN, ZOOM_OUT } = mutations;
 const zoomStore = {
   namespaced: true,
   state: {
-    zoomMap: 0.5
+    zoomMap: 1
   },
   getters: {
     zoomMap: ({ zoomMap }) => zoomMap
