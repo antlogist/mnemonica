@@ -12,6 +12,7 @@
     :x="Number(childMap.x)"
     :y="Number(childMap.y)"
     :w="Number(childMap.width)"
+    :h="Number(childMap.height)"
     :isResizable="isResizable"
     :isDraggable="isDraggable"
     v-on:resizing="resize"
