@@ -172,7 +172,18 @@ export default {
       this.openDialogChildMapEditText({ childId, parentId: this.parentId });
     },
     copyCurrentChildMap(childId) {
-      console.log(childId);
+      const newChildId = `${Date.now()}`;
+      const currentChildMap = this.maps[this.parentId].excerpt.children[
+        childId
+      ];
+      const copiedChildMap = JSON.parse(JSON.stringify(currentChildMap));
+      copiedChildMap.id = newChildId;
+      console.log(currentChildMap, newChildId);
+      this.addChildMap({
+        parentId: this.parentId,
+        childId: newChildId,
+        childMap: copiedChildMap
+      });
     }
   },
   watch: {
