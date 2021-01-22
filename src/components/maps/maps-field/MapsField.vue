@@ -50,4 +50,9 @@ export default {
 .s-circle {
   border-radius: 50%;
 }
+.scale-wrapper {
+  -webkit-transition: 0 0;
+  -o-transition: 0 0;
+  transition: 0 0;
+}
 </style>
