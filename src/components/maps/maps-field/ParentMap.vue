@@ -124,7 +124,7 @@ export default {
         backgroundColor: "#ffffff",
         textAlign: "center",
         verticalAlign: "middle",
-        fontSize: "24",
+        fontSize: "10",
         fontColor: "#000000",
         otherStyles: [],
         otherClasses: [],
