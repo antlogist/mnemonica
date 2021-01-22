@@ -43,7 +43,6 @@ const mapsStore = {
   },
   actions: {
     addChildMap({ dispatch, state }, { parentId, childId, childMap }) {
-      debugger;
       console.log(state);
       console.log({ parentId, childId, childMap });
       state.maps[parentId].excerpt.children[childId] = childMap;

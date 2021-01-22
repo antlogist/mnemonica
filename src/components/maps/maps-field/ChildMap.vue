@@ -46,7 +46,7 @@
     <v-btn
       v-if="childMap.isActivated"
       class="child-delete-btn"
-      @click="deleteChildMap"
+      @click="deleteChildMap(childMap.id)"
       color="secondary"
       fab
       x-small
@@ -115,7 +115,8 @@ export default {
       "fetchMaps",
       "openDialogChildMap",
       "openDialogChildMapEditText",
-      "addChildMap"
+      "addChildMap",
+      "saveMaps"
     ]),
     onDragstop() {
       this.maps[this.parentId].excerpt.children[this.childMap.id]["x"] = String(
@@ -164,8 +165,9 @@ export default {
       console.log("openChildDialog", childId);
       this.openDialogChildMap({ childId, parentId: this.parentId });
     },
-    deleteChildMap() {
-      console.log("delete");
+    deleteChildMap(childId) {
+      delete this.maps[this.parentId].excerpt.children[childId];
+      this.saveMaps();
     },
     openChildDialogTextEdit(childId) {
       console.log("openChildDialogTextEdit", childId);
