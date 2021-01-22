@@ -65,6 +65,17 @@
     >
       <v-icon>mdi-pen</v-icon>
     </v-btn>
+    <v-btn
+      v-if="childMap.isActivated"
+      class="child-copy-btn"
+      @click="copyCurrentChildMap(childMap.id)"
+      color="secondary"
+      fab
+      x-small
+      dark
+    >
+      <v-icon>mdi-content-copy</v-icon>
+    </v-btn>
   </VueDragResize>
 </template>
 
@@ -159,6 +170,9 @@ export default {
     openChildDialogTextEdit(childId) {
       console.log("openChildDialogTextEdit", childId);
       this.openDialogChildMapEditText({ childId, parentId: this.parentId });
+    },
+    copyCurrentChildMap(childId) {
+      console.log(childId);
     }
   },
   watch: {
@@ -177,6 +191,7 @@ export default {
 <style lang="scss" scoped="true">
 .child-menu-btn,
 .child-delete-btn,
+.child-copy-btn,
 .child-edit-text-btn {
   position: absolute;
   bottom: 0;
@@ -191,5 +206,8 @@ export default {
 }
 .child-edit-text-btn {
   margin-left: 80px;
+}
+.child-copy-btn {
+  margin-left: 120px;
 }
 </style>
