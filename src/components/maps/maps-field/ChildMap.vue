@@ -4,6 +4,7 @@
     :style="{
       backgroundColor: childMap.backgroundColor,
       fontSize: childMap.fontSize + 'px',
+      backgroundImage: 'url(' + childMap.img + ')',
       color: childMap.fontColor,
       display: 'flex',
       alignItems: 'center'

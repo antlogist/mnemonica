@@ -77,7 +77,8 @@ export default {
     parentClicked: false
   }),
   computed: {
-    ...mapGetters("maps", ["maps"])
+    ...mapGetters("maps", ["maps"]),
+    ...mapGetters("zoom", ["zoomMap"])
   },
   methods: {
     ...mapActions("maps", ["fetchMaps", "openDialogParentMap", "addChildMap"]),
