@@ -19,6 +19,7 @@
             <DialogChildMapShape class="mb-3"></DialogChildMapShape>
             <DialogChildMapFontSize class="mb-3"></DialogChildMapFontSize>
             <DialogChildMapTextAlign></DialogChildMapTextAlign>
+            <DialogChildMapTexture></DialogChildMapTexture>
           </v-col>
         </v-row>
       </v-container>
@@ -32,6 +33,7 @@ import DialogChildMapToolbar from "@/components/maps/dialog-child-map/DialogChil
 import DialogChildMapDescr from "@/components/maps/dialog-child-map/DialogChildMapDescr";
 import DialogChildMapShape from "@/components/maps/dialog-child-map/DialogChildMapShape";
 import DialogChildMapFontSize from "@/components/maps/dialog-child-map/DialogChildMapFontSize";
+import DialogChildMapTexture from "@/components/maps/dialog-child-map/DialogChildMapTexture";
 import DialogChildMapTextAlign from "@/components/maps/dialog-child-map/DialogChildMapTextAlign";
 import DialogChildMapBackColor from "@/components/maps/dialog-child-map/DialogChildMapBackColor";
 import DialogChildMapFontColor from "@/components/maps/dialog-child-map/DialogChildMapFontColor";
@@ -46,6 +48,7 @@ export default {
     DialogChildMapDescr,
     DialogChildMapShape,
     DialogChildMapFontSize,
+    DialogChildMapTexture,
     DialogChildMapTextAlign,
     DialogChildMapBackColor,
     DialogChildMapFontColor
