@@ -5,6 +5,8 @@
       backgroundColor: childMap.backgroundColor,
       fontSize: childMap.fontSize + 'px',
       backgroundImage: 'url(' + childMap.img + ')',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'repeat',
       color: childMap.fontColor,
       display: 'flex',
       alignItems: 'center'
