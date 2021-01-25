@@ -12,7 +12,7 @@ export default {
   name: "DialogChildMapTexture",
   data: () => ({
     textures: ["gray-sand"],
-    address: "../../img/textures/",
+    address: "./img/textures/",
     extension: ".png"
   }),
   computed: {
@@ -26,8 +26,12 @@ export default {
           : "";
         let img = "";
         if (imgAddress) {
-          img = imgAddress;
+          img = imgAddress.substring(
+            imgAddress.lastIndexOf("/") + 1,
+            imgAddress.lastIndexOf(".")
+          );
         }
+        console.log(img);
         return img;
       },
       set(item) {
