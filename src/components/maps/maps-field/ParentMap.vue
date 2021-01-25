@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ maps }}
     <VueDragResize
       v-for="map in maps"
       :key="map.id"

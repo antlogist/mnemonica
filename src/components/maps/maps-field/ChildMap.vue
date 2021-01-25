@@ -12,6 +12,8 @@
       alignItems: 'center'
     }"
     :class="childMap.class"
+    :minh="25"
+    :minw="25"
     :x="Number(childMap.x)"
     :y="Number(childMap.y)"
     :w="Number(childMap.width)"

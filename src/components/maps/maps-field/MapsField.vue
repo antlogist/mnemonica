@@ -1,6 +1,6 @@
 <template>
   <div class="maps-wrapper">
-    <div class="scale-wrapper" :style="{ transform: 'scale(' + zoomMap + ')' }">
+    <div class="scale-wrapper" :style="{ transform: 'scale(' + zoomMap + ')'}">
       <ParentMap></ParentMap>
     </div>
   </div>
@@ -54,5 +54,6 @@ export default {
   -webkit-transition: 0 0;
   -o-transition: 0 0;
   transition: 0 0;
+  transform-origin: top left;
 }
 </style>
