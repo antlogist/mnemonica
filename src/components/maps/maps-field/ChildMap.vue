@@ -38,6 +38,9 @@
       }"
     ></div>
     <v-btn
+      :style="{
+        zIndex: '999'
+      }"
       v-if="childMap.isActivated"
       class="child-menu-btn"
       @click="openChildDialog(childMap.id)"
@@ -49,6 +52,9 @@
       <v-icon>mdi-menu</v-icon>
     </v-btn>
     <v-btn
+      :style="{
+        zIndex: '999'
+      }"
       v-if="childMap.isActivated"
       class="child-delete-btn"
       @click="deleteChildMap(childMap.id)"
@@ -60,6 +66,9 @@
       <v-icon>mdi-delete</v-icon>
     </v-btn>
     <v-btn
+      :style="{
+        zIndex: '999'
+      }"
       v-if="childMap.isActivated"
       class="child-edit-text-btn"
       @click="openChildDialogTextEdit(childMap.id)"
@@ -71,6 +80,9 @@
       <v-icon>mdi-pen</v-icon>
     </v-btn>
     <v-btn
+      :style="{
+        zIndex: '999'
+      }"
       v-if="childMap.isActivated"
       class="child-copy-btn"
       @click="copyCurrentChildMap(childMap.id)"
