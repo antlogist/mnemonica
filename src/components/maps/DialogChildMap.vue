@@ -16,9 +16,10 @@
             </v-row>
           </v-col>
           <v-col cols="12" sm="4">
+            <DialogChildMapSize class="mb-3"></DialogChildMapSize>
             <DialogChildMapShape class="mb-3"></DialogChildMapShape>
             <DialogChildMapFontSize class="mb-3"></DialogChildMapFontSize>
-            <DialogChildMapTextAlign></DialogChildMapTextAlign>
+            <DialogChildMapTextAlign class="mb-3"></DialogChildMapTextAlign>
             <DialogChildMapTexture></DialogChildMapTexture>
           </v-col>
         </v-row>
@@ -37,6 +38,7 @@ import DialogChildMapTexture from "@/components/maps/dialog-child-map/DialogChil
 import DialogChildMapTextAlign from "@/components/maps/dialog-child-map/DialogChildMapTextAlign";
 import DialogChildMapBackColor from "@/components/maps/dialog-child-map/DialogChildMapBackColor";
 import DialogChildMapFontColor from "@/components/maps/dialog-child-map/DialogChildMapFontColor";
+import DialogChildMapSize from "@/components/maps/dialog-child-map/DialogChildMapSize";
 export default {
   name: "DialogChildMap",
   data: () => ({}),
@@ -51,7 +53,8 @@ export default {
     DialogChildMapTexture,
     DialogChildMapTextAlign,
     DialogChildMapBackColor,
-    DialogChildMapFontColor
+    DialogChildMapFontColor,
+    DialogChildMapSize
   }
 };
 </script>
