@@ -1,6 +1,6 @@
 <template>
   <div class="maps-wrapper">
-    <div class="scale-wrapper" :style="{ transform: 'scale(' + zoomMap + ')'}">
+    <div class="scale-wrapper" :style="{ transform: 'scale(' + zoomMap + ')' }">
       <ParentMap></ParentMap>
     </div>
   </div>
