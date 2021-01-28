@@ -3,19 +3,19 @@
     <v-row>
       <v-col class="text-center">
         <v-card outlined class="ml-3">
-          <v-edit-dialog persistent :return-value.sync="height" large>
+          <v-edit-dialog persistent :return-value.sync="x" large>
             <v-card-text>
-              <span class="caption">Height</span>
+              <span class="caption">X</span>
               <v-text-field
                 style="justify-content: center"
-                label="height"
+                label="x"
                 outlined
-                v-html="height"
+                v-html="x"
               ></v-text-field>
             </v-card-text>
             <template v-slot:input>
               <v-text-field
-                v-model.lazy="height"
+                v-model.lazy="x"
                 label="Edit"
                 counter
               ></v-text-field>
@@ -25,19 +25,19 @@
       </v-col>
       <v-col class="text-center">
         <v-card outlined class="mr-3">
-          <v-edit-dialog persistent :return-value.sync="width" large>
+          <v-edit-dialog persistent :return-value.sync="y" large>
             <v-card-text>
-              <span class="caption">Width</span>
+              <span class="caption">Y</span>
               <v-text-field
                 style="justify-content: center"
-                label="width"
+                label="y"
                 outlined
-                v-html="width"
+                v-html="y"
               ></v-text-field>
             </v-card-text>
             <template v-slot:input>
               <v-text-field
-                v-model.lazy="width"
+                v-model.lazy="y"
                 label="Edit"
                 counter
               ></v-text-field>
@@ -52,38 +52,38 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "DialogChildMapSize",
+  name: "DialogChildMapCoord",
   data: () => ({
     mapDescr: ""
   }),
   computed: {
     ...mapGetters("maps", ["maps", "currentChildMapId", "currentParentMapId"]),
-    height: {
+    x: {
       get() {
         return this.currentChildMapId
           ? this.maps[this.currentParentMapId]["excerpt"]["children"][
               this.currentChildMapId
-            ]["height"]
+            ]["x"]
           : "";
       },
       set(h) {
         this.maps[this.currentParentMapId]["excerpt"]["children"][
           this.currentChildMapId
-        ]["height"] = h;
+        ]["x"] = h;
       }
     },
-    width: {
+    y: {
       get() {
         return this.currentChildMapId
           ? this.maps[this.currentParentMapId]["excerpt"]["children"][
               this.currentChildMapId
-            ]["width"]
+            ]["y"]
           : "";
       },
       set(w) {
         this.maps[this.currentParentMapId]["excerpt"]["children"][
           this.currentChildMapId
-        ]["width"] = w;
+        ]["y"] = w;
       }
     }
   }
