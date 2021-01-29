@@ -5,12 +5,14 @@ const {
   MAPS,
   SHOW_PARENT_DIALOG,
   SHOW_CHILD_DIALOG,
-  SHOW_CHILD_DIALOG_EDIT_TEXT
+  SHOW_CHILD_DIALOG_EDIT_TEXT,
+  SHOW_PARENT_LIST_DIALOG
 } = mutations;
 
 const mapsStore = {
   namespaced: true,
   state: {
+    isDialogParentMapListShow: false,
     isDialogParentMapShow: false,
     isDialogChildMapShow: false,
     isDialogChildMapEditTextShow: false,
@@ -20,6 +22,8 @@ const mapsStore = {
   },
   getters: {
     maps: ({ maps }) => maps,
+    isDialogParentMapListShow: ({ isDialogParentMapListShow }) =>
+      isDialogParentMapListShow,
     isDialogParentMapShow: ({ isDialogParentMapShow }) => isDialogParentMapShow,
     isDialogChildMapShow: ({ isDialogChildMapShow }) => isDialogChildMapShow,
     isDialogChildMapEditTextShow: ({ isDialogChildMapEditTextShow }) =>
@@ -30,6 +34,9 @@ const mapsStore = {
   mutations: {
     [MAPS](state, value) {
       state.maps = value;
+    },
+    [SHOW_PARENT_LIST_DIALOG](state, bool) {
+      state.isDialogParentMapListShow = bool;
     },
     [SHOW_PARENT_DIALOG](state, bool) {
       state.isDialogParentMapShow = bool;
@@ -48,6 +55,12 @@ const mapsStore = {
       state.maps[parentId].excerpt.children[childId] = childMap;
       dispatch("saveMaps", { root: false });
       //      console.log(state.maps[parentId].excerpt.children)
+    },
+    openDialogParentMapList({ commit }) {
+      commit("SHOW_PARENT_LIST_DIALOG", true);
+    },
+    closeDialogParentMapList({ commit }) {
+      commit("SHOW_PARENT_LIST_DIALOG", false);
     },
     openDialogParentMap({ commit, state }, id) {
       state.currentParentMapId = Number(id);

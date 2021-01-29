@@ -1,8 +1,13 @@
 import axios from "@/plugins/axios/wp/";
 
 class Map {
-  async fetchMaps() {
-    const response = await axios.get(`/wp-json/map/v1/list`);
+  async fetchMaps(data) {
+    let response;
+    if (!data) {
+      response = await axios.get(`/wp-json/map/v1/list`);
+    } else {
+      response = await axios.get(`/wp-json/map/v1/list`, data);
+    }
     return response;
   }
 
