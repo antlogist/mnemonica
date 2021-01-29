@@ -14,6 +14,7 @@ export default {
   CURRENT_NOTE: "CURRENT_NOTE",
   CATS: "CATS",
   MAPS: "MAPS",
+  MAPS_LIST: "MAPS_LIST",
   ZOOM_IN: "ZOOM_IN",
   ZOOM_OUT: "ZOOM_OUT"
 };
