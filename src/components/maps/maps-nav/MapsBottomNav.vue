@@ -16,6 +16,10 @@
       <span>Save</span>
       <v-icon>mdi-content-save</v-icon>
     </v-btn>
+    <v-btn @click="openDialogMapList">
+      <span>List</span>
+      <v-icon>mdi-format-list-bulleted</v-icon>
+    </v-btn>
   </v-bottom-navigation>
 </template>
 
@@ -27,7 +31,12 @@ export default {
     ...mapGetters("zoom", ["zoomMap"])
   },
   methods: {
-    ...mapActions("maps", ["fetchMaps", "createMap", "saveMaps"]),
+    ...mapActions("maps", [
+      "fetchMaps",
+      "createMap",
+      "saveMaps",
+      "openDialogParentMapList"
+    ]),
     ...mapActions("zoom", ["zoomInMap", "zoomOutMap"]),
     newMap() {
       this.createMap();
@@ -42,6 +51,9 @@ export default {
     },
     save() {
       this.saveMaps();
+    },
+    openDialogMapList() {
+      this.openDialogParentMapList();
     }
   }
 };
