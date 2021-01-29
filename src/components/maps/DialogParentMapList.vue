@@ -1,13 +1,18 @@
 <template>
-  <v-dialog v-model="isDialogParentMapListShow" fullscreen persistent>
+  <v-dialog v-model="isDialogParentMapListShow" persistent>
     <v-card>
-      <DialogParentMapListToolbar></DialogParentMapListToolbar>
+      <DialogParentMapListToolbar
+        :mapsIds="selected"
+      ></DialogParentMapListToolbar>
       <v-container>
-        {{ mapsList }}
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ex,
-        impedit sequi, odit voluptates ut voluptate repellat ipsa nostrum
-        dolores adipisci. Dolorum reprehenderit iure est culpa mollitia
-        reiciendis corporis ipsa!
+        {{ selected }}
+        <v-checkbox
+          v-for="item in mapsList"
+          :key="item.id"
+          :label="item.title"
+          :value="item.id"
+          v-model="selected"
+        ></v-checkbox>
       </v-container>
     </v-card>
   </v-dialog>
@@ -18,9 +23,22 @@ import { mapGetters } from "vuex";
 import DialogParentMapListToolbar from "@/components/maps/dialog-parent-map-list/DialogParentMapListToolbar";
 export default {
   name: "DialogParentMapList",
-  data: () => ({}),
+  data: () => ({
+    selected: []
+  }),
   computed: {
-    ...mapGetters("maps", ["isDialogParentMapListShow", "mapsList"])
+    ...mapGetters("maps", [
+      "isDialogParentMapListShow",
+      "mapsList",
+      "isDialogParentMapListShow"
+    ])
+  },
+  watch: {
+    isDialogParentMapListShow(bool) {
+      if (bool === false) {
+        this.selected = [];
+      }
+    }
   },
   components: {
     DialogParentMapListToolbar

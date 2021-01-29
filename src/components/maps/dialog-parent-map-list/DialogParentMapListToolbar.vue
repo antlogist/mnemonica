@@ -5,6 +5,7 @@
         <v-icon>mdi-close</v-icon>
       </v-btn>
       <v-toolbar-title>Parent Map</v-toolbar-title>
+      {{ mapsIds }}
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn icon @click="save" dark text>
@@ -19,6 +20,12 @@
 import { mapActions } from "vuex";
 export default {
   name: "DialogParentMapToolbar",
+  props: {
+    mapsIds: {
+      default: () => [],
+      type: Array
+    }
+  },
   computed: {},
   methods: {
     ...mapActions("maps", ["closeDialogParentMapList"]),
