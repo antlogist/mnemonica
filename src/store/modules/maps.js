@@ -3,6 +3,7 @@ import mutations from "@/store/mutations";
 
 const {
   MAPS,
+  MAPS_LIST,
   SHOW_PARENT_DIALOG,
   SHOW_CHILD_DIALOG,
   SHOW_CHILD_DIALOG_EDIT_TEXT,
@@ -18,10 +19,12 @@ const mapsStore = {
     isDialogChildMapEditTextShow: false,
     currentParentMapId: 0,
     currentChildMapId: 0,
-    maps: {}
+    maps: {},
+    mapsList: {}
   },
   getters: {
     maps: ({ maps }) => maps,
+    mapsList: ({ mapsList }) => mapsList,
     isDialogParentMapListShow: ({ isDialogParentMapListShow }) =>
       isDialogParentMapListShow,
     isDialogParentMapShow: ({ isDialogParentMapShow }) => isDialogParentMapShow,
@@ -34,6 +37,9 @@ const mapsStore = {
   mutations: {
     [MAPS](state, value) {
       state.maps = value;
+    },
+    [MAPS_LIST](state, value) {
+      state.mapsList = value;
     },
     [SHOW_PARENT_LIST_DIALOG](state, bool) {
       state.isDialogParentMapListShow = bool;
@@ -56,7 +62,8 @@ const mapsStore = {
       dispatch("saveMaps", { root: false });
       //      console.log(state.maps[parentId].excerpt.children)
     },
-    openDialogParentMapList({ commit }) {
+    async openDialogParentMapList({ commit, dispatch }) {
+      await dispatch("fetchMapsList", { root: false });
       commit("SHOW_PARENT_LIST_DIALOG", true);
     },
     closeDialogParentMapList({ commit }) {
@@ -87,6 +94,25 @@ const mapsStore = {
     closeDialogChildMapEditText({ commit, state }) {
       commit("SHOW_CHILD_DIALOG_EDIT_TEXT", false);
       state.currentChildMapId = "";
+    },
+    async fetchMapsList({ commit, dispatch }) {
+      try {
+        dispatch("toggleLoader", true, { root: true });
+        const response = await mapApi.fetchMaps("list");
+        if (response.Error) {
+          throw Error(response.Error);
+        }
+        commit("MAPS_LIST", response);
+      } catch (err) {
+        console.log(err);
+        dispatch(
+          "showNotification",
+          { msg: err.message, color: "red" },
+          { root: true }
+        );
+      } finally {
+        dispatch("toggleLoader", false, { root: true });
+      }
     },
     async fetchMaps({ commit, dispatch }) {
       try {

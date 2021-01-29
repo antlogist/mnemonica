@@ -3,6 +3,7 @@
     <v-card>
       <DialogParentMapListToolbar></DialogParentMapListToolbar>
       <v-container>
+        {{ mapsList }}
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ex,
         impedit sequi, odit voluptates ut voluptate repellat ipsa nostrum
         dolores adipisci. Dolorum reprehenderit iure est culpa mollitia
@@ -19,7 +20,7 @@ export default {
   name: "DialogParentMapList",
   data: () => ({}),
   computed: {
-    ...mapGetters("maps", ["isDialogParentMapListShow"])
+    ...mapGetters("maps", ["isDialogParentMapListShow", "mapsList"])
   },
   components: {
     DialogParentMapListToolbar
