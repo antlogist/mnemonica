@@ -6,8 +6,10 @@ class Map {
     let response;
     if (!req) {
       response = await axios.get(`/wp-json/map/v1/list`);
-    } else {
+    } else if (req === "list") {
       response = await axios.get(`/wp-json/map/v1/listid`);
+    } else {
+      response = await axios.get(`/wp-json/map/v1/selected/${req}`);
     }
     return response;
   }

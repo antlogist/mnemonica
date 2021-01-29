@@ -28,12 +28,14 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapActions("maps", ["closeDialogParentMapList"]),
+    ...mapActions("maps", ["closeDialogParentMapList", "fetchMapsSelected"]),
     closeDialog() {
       this.closeDialogParentMapList();
     },
     save() {
-      console.log("List save");
+      if (this.mapsIds.length > 0) {
+        this.fetchMapsSelected({ selected: this.mapsIds });
+      }
     }
   }
 };

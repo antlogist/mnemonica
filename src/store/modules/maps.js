@@ -20,7 +20,8 @@ const mapsStore = {
     currentParentMapId: 0,
     currentChildMapId: 0,
     maps: {},
-    mapsList: {}
+    mapsList: {},
+    selectedMaps: []
   },
   getters: {
     maps: ({ maps }) => maps,
@@ -95,6 +96,27 @@ const mapsStore = {
       commit("SHOW_CHILD_DIALOG_EDIT_TEXT", false);
       state.currentChildMapId = "";
     },
+    async fetchMapsSelected({ commit, dispatch, state }, { selected }) {
+      console.log(selected);
+      state.selectedMaps = selected;
+      try {
+        dispatch("toggleLoader", true, { root: true });
+        const response = await mapApi.fetchMaps(selected);
+        if (response.Error) {
+          throw Error(response.Error);
+        }
+        commit("MAPS", response);
+      } catch (err) {
+        console.log(err);
+        dispatch(
+          "showNotification",
+          { msg: err.message, color: "red" },
+          { root: true }
+        );
+      } finally {
+        dispatch("toggleLoader", false, { root: true });
+      }
+    },
     async fetchMapsList({ commit, dispatch }) {
       try {
         dispatch("toggleLoader", true, { root: true });
@@ -114,7 +136,11 @@ const mapsStore = {
         dispatch("toggleLoader", false, { root: true });
       }
     },
-    async fetchMaps({ commit, dispatch }) {
+    async fetchMaps({ commit, dispatch, state }) {
+      if (state.selectedMaps.length > 0) {
+        dispatch("fetchMapsSelected", { selected: state.selectedMaps });
+        return;
+      }
       try {
         dispatch("toggleLoader", true, { root: true });
         const response = await mapApi.fetchMaps();
