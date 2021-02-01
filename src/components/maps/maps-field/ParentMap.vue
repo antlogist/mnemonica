@@ -1,7 +1,8 @@
 <template>
   <div>
-    {{ maps }}
     <VueDragResize
+      :parentScaleX="zoomMap"
+      :parentScaleY="zoomMap"
       v-for="map in maps"
       :key="map.id"
       :style="{ backgroundColor: map.excerpt.color }"
@@ -74,7 +75,7 @@ export default {
     height: 0,
     top: 0,
     left: 0,
-    parentClicked: false
+    parentClicked: false,
   }),
   computed: {
     ...mapGetters("maps", ["maps"]),
