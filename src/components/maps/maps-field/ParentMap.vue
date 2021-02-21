@@ -75,7 +75,7 @@ export default {
     height: 0,
     top: 0,
     left: 0,
-    parentClicked: false,
+    parentClicked: false
   }),
   computed: {
     ...mapGetters("maps", ["maps"]),

@@ -4,11 +4,17 @@ import mutations from "@/store/mutations";
 const {
   MAPS,
   MAPS_LIST,
+  MAPS_LIST_ARR,
   SHOW_PARENT_DIALOG,
   SHOW_CHILD_DIALOG,
   SHOW_CHILD_DIALOG_EDIT_TEXT,
   SHOW_PARENT_LIST_DIALOG
 } = mutations;
+
+function convertMapsToArr(obj) {
+  const arr = Object.values(obj);
+  return arr;
+}
 
 const mapsStore = {
   namespaced: true,
@@ -21,11 +27,13 @@ const mapsStore = {
     currentChildMapId: 0,
     maps: {},
     mapsList: {},
+    mapsListArr: [],
     selectedMaps: []
   },
   getters: {
     maps: ({ maps }) => maps,
     mapsList: ({ mapsList }) => mapsList,
+    mapsListArr: ({ mapsListArr }) => mapsListArr,
     isDialogParentMapListShow: ({ isDialogParentMapListShow }) =>
       isDialogParentMapListShow,
     isDialogParentMapShow: ({ isDialogParentMapShow }) => isDialogParentMapShow,
@@ -41,6 +49,9 @@ const mapsStore = {
     },
     [MAPS_LIST](state, value) {
       state.mapsList = value;
+    },
+    [MAPS_LIST_ARR](state, value) {
+      state.mapsListArr = value;
     },
     [SHOW_PARENT_LIST_DIALOG](state, bool) {
       state.isDialogParentMapListShow = bool;
@@ -125,6 +136,7 @@ const mapsStore = {
           throw Error(response.Error);
         }
         commit("MAPS_LIST", response);
+        commit("MAPS_LIST_ARR", convertMapsToArr(response));
       } catch (err) {
         console.log(err);
         dispatch(
