@@ -15,6 +15,7 @@ export default {
   CATS: "CATS",
   MAPS: "MAPS",
   MAPS_LIST: "MAPS_LIST",
+  MAPS_LIST_ARR: "MAPS_LIST_ARR",
   ZOOM_IN: "ZOOM_IN",
   ZOOM_OUT: "ZOOM_OUT"
 };

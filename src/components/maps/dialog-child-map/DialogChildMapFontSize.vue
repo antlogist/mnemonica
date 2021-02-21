@@ -11,7 +11,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "DialogChildMapFontSize",
   data: () => ({
-    sizes: [...Array(30).keys()].map(String)
+    sizes: [...Array(50).keys()].map(String)
   }),
   computed: {
     ...mapGetters("maps", ["maps", "currentChildMapId", "currentParentMapId"]),

@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar dark color="primary">
+  <v-app-bar fixed dark color="primary">
     <template>
       <v-btn icon dark @click="closeDialogParentMapList">
         <v-icon>mdi-close</v-icon>
@@ -13,7 +13,7 @@
         </v-btn>
       </v-toolbar-items>
     </template>
-  </v-toolbar>
+  </v-app-bar>
 </template>
 
 <script>
