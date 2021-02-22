@@ -16,6 +16,19 @@ function convertMapsToArr(obj) {
   return arr;
 }
 
+function marginMaps(obj) {
+  for (let map in obj) {
+    if (obj[map]["excerpt"]) {
+      obj[map]["excerpt"]["x"] = String(
+        Number(obj[map]["excerpt"]["x"]) + 5000
+      );
+      obj[map]["excerpt"]["y"] = String(
+        Number(obj[map]["excerpt"]["y"]) + 5000
+      );
+    }
+  }
+}
+
 const mapsStore = {
   namespaced: true,
   state: {
@@ -46,6 +59,7 @@ const mapsStore = {
   mutations: {
     [MAPS](state, value) {
       state.maps = value;
+      marginMaps(value);
     },
     [MAPS_LIST](state, value) {
       state.mapsList = value;
