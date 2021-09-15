@@ -6,6 +6,14 @@
       ></DialogParentMapListToolbar>
       <v-sheet style="margin-top: 56px;">
         <v-container>
+          <v-btn elevation="2" class="mt-5 mr-1" @click="selectAll" small
+            >Select All</v-btn
+          >
+          <v-btn elevation="2" class="mt-5" @click="clearAll" small
+            >Clear All</v-btn
+          >
+        </v-container>
+        <v-container>
           <v-autocomplete
             v-model="selected"
             :items="mapsListArr"
@@ -15,7 +23,7 @@
             flat
             hide-no-data
             hide-details
-            label="What state are you from?"
+            label="Choose map"
             multiple
           ></v-autocomplete>
           <v-checkbox
@@ -46,6 +54,18 @@ export default {
       "mapsListArr",
       "isDialogParentMapListShow"
     ])
+  },
+  methods: {
+    selectAll() {
+      this.selected = [];
+      const mapsList = this.mapsListArr;
+      mapsList.map(map => {
+        this.selected.push(map.id);
+      });
+    },
+    clearAll() {
+      this.selected = [];
+    }
   },
   watch: {
     isDialogParentMapListShow(bool) {
