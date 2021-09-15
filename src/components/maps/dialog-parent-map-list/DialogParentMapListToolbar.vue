@@ -5,7 +5,7 @@
         <v-icon>mdi-close</v-icon>
       </v-btn>
       <v-toolbar-title>Parent Map</v-toolbar-title>
-      {{ mapsIds }}
+      <!--      {{ mapsIds }}-->
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn icon @click="save" dark text>
@@ -35,6 +35,8 @@ export default {
     save() {
       if (this.mapsIds.length > 0) {
         this.fetchMapsSelected({ selected: this.mapsIds });
+        // Close dialog
+        this.closeDialog();
       }
     }
   }
