@@ -52,6 +52,16 @@
       >
         <v-icon>mdi-delete</v-icon>
       </v-btn>
+      <v-btn
+        v-if="map.excerpt.isActivated"
+        class="show-child-btn"
+        color="secondary"
+        fab
+        x-small
+        dark
+      >
+        <v-icon>mdi-eye</v-icon>
+      </v-btn>
       <ChildMap
         v-for="nestedMap in map.excerpt.children"
         :parentId="map.id"
@@ -82,7 +92,12 @@ export default {
     ...mapGetters("zoom", ["zoomMap"])
   },
   methods: {
-    ...mapActions("maps", ["fetchMaps", "openDialogParentMap", "addChildMap"]),
+    ...mapActions("maps", [
+      "fetchMaps",
+      "openDialogParentMap",
+      "addChildMap",
+      "fetchMapsSelected"
+    ]),
     onActivated(id) {
       this.maps[id].excerpt["isActivated"] = true;
     },
@@ -141,7 +156,8 @@ export default {
     }
   },
   mounted() {
-    this.fetchMaps();
+    //    this.fetchMaps();
+    this.fetchMapsSelected();
   },
   components: {
     VueDragResize,
@@ -153,7 +169,8 @@ export default {
 <style lang="scss" scoped="true">
 .parent-menu-btn,
 .add-child-btn,
-.delete-parent-btn {
+.delete-parent-btn,
+.show-child-btn {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -167,5 +184,8 @@ export default {
 }
 .delete-parent-btn {
   margin-left: 80px;
+}
+.show-child-btn {
+  margin-left: 120px;
 }
 </style>
