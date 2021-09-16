@@ -30,7 +30,8 @@ class Map {
         img: "",
         sound: "",
         smell: "",
-        children: {}
+        children: {},
+        show: false
       })
     };
     const response = await axios.post(`/wp-json/wp/v2/map/`, data);
