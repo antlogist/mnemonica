@@ -28,7 +28,6 @@
     @deactivated="onDeactivated"
     @clicked="onClicked"
   >
-    <h1>{{ childMap.show }}</h1>
     <div
       v-html="childMap.descr"
       :style="{

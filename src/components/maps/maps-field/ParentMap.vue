@@ -54,6 +54,10 @@
       </v-btn>
       <v-btn
         v-if="map.excerpt.isActivated"
+        @click="
+          map.showChildren = true;
+          renderChildren(map);
+        "
         class="show-child-btn"
         color="secondary"
         fab
@@ -63,7 +67,7 @@
         <v-icon>mdi-eye</v-icon>
       </v-btn>
       <ChildMap
-        v-for="nestedMap in map.excerpt.children"
+        v-for="nestedMap in renderChildren(map)"
         :parentId="map.id"
         :childMap="nestedMap"
         :key="nestedMap.id"
@@ -98,6 +102,12 @@ export default {
       "addChildMap",
       "fetchMapsSelected"
     ]),
+    renderChildren(map) {
+      if (map.showChildren) {
+        return map.excerpt.children;
+      }
+      return [];
+    },
     onActivated(id) {
       this.maps[id].excerpt["isActivated"] = true;
     },
