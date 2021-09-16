@@ -1,6 +1,7 @@
 <template>
   <div>
     <VueDragResize
+      :id="map.id"
       :parentScaleX="zoomMap"
       :parentScaleY="zoomMap"
       v-for="map in maps"
@@ -54,10 +55,7 @@
       </v-btn>
       <v-btn
         v-if="map.excerpt.isActivated"
-        @click="
-          map.showChildren = true;
-          renderChildren(map);
-        "
+        @click="showChildren(map.id)"
         class="show-child-btn"
         color="secondary"
         fab
@@ -67,7 +65,7 @@
         <v-icon>mdi-eye</v-icon>
       </v-btn>
       <ChildMap
-        v-for="nestedMap in renderChildren(map)"
+        v-for="nestedMap in map.excerpt.children"
         :parentId="map.id"
         :childMap="nestedMap"
         :key="nestedMap.id"
@@ -100,13 +98,11 @@ export default {
       "fetchMaps",
       "openDialogParentMap",
       "addChildMap",
-      "fetchMapsSelected"
+      "fetchMapsSelected",
+      "showChildMaps"
     ]),
-    renderChildren(map) {
-      if (map.showChildren) {
-        return map.excerpt.children;
-      }
-      return [];
+    showChildren(id) {
+      this.showChildMaps(id);
     },
     onActivated(id) {
       this.maps[id].excerpt["isActivated"] = true;
