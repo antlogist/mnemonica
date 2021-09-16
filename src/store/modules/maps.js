@@ -40,6 +40,7 @@ const mapsStore = {
     currentParentMapId: 0,
     currentChildMapId: 0,
     maps: {},
+    mapsCopy: {},
     mapsList: {},
     mapsListArr: [],
     selectedMaps: []
@@ -93,9 +94,12 @@ const mapsStore = {
         childMap
       });
       state.maps[parentId].excerpt.children[childId] = childMap;
-      dispatch("saveMaps", {
-        root: false
-      });
+//      dispatch("saveMaps", {
+//        root: false
+//      });
+      
+        dispatch("saveMap", {id: parentId, title: state.maps[parentId]["title"], excerpt: state.maps[parentId]["excerpt"]});
+      
       //      console.log(state.maps[parentId].excerpt.children)
     },
     async openDialogParentMapList({ commit, dispatch }) {
@@ -271,7 +275,7 @@ const mapsStore = {
       });
     },
 
-    async saveMap({ dispatch }, { id, title, excerpt }) {
+    async saveMap({ dispatch, state }, { id, title, excerpt }) {
       try {
         dispatch("toggleLoader", true, {
           root: true
@@ -283,6 +287,11 @@ const mapsStore = {
       } catch (err) {
         console.log(err);
       } finally {
+        
+        //Deep copy maps
+        state.mapsCopy = JSON.parse(JSON.stringify(state.maps));
+        state.maps = {};
+        state.maps = JSON.parse(JSON.stringify(state.mapsCopy));
         dispatch("toggleLoader", false, {
           root: true
         });
