@@ -1,5 +1,6 @@
 <template>
   <VueDragResize
+    v-if="maps[parentId].showChildren && show"
     :isActive="Boolean(childMap.isActivated)"
     :style="{
       backgroundColor: childMap.backgroundColor,
@@ -122,7 +123,8 @@ export default {
     top: 0,
     left: 0,
     isDraggable: false,
-    isResizable: false
+    isResizable: false,
+    show: true
   }),
   computed: {
     ...mapGetters("maps", ["maps"])
@@ -133,7 +135,8 @@ export default {
       "openDialogChildMap",
       "openDialogChildMapEditText",
       "addChildMap",
-      "saveMaps"
+      "saveMaps",
+      "saveMap"
     ]),
     onDragstop() {
       this.maps[this.parentId].excerpt.children[this.childMap.id]["x"] = String(
@@ -184,7 +187,12 @@ export default {
     },
     deleteChildMap(childId) {
       delete this.maps[this.parentId].excerpt.children[childId];
-      this.saveMaps();
+      this.saveMap({
+        id: this.parentId,
+        title: this.maps[this.parentId].title,
+        excerpt: this.maps[this.parentId].excerpt
+      });
+      this.show = false;
     },
     openChildDialogTextEdit(childId) {
       console.log("openChildDialogTextEdit", childId);
