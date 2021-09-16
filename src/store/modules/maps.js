@@ -82,6 +82,9 @@ const mapsStore = {
     }
   },
   actions: {
+    showChildMaps({ state }, id) {
+      state.maps[id].showChildren = true;
+    },
     addChildMap({ dispatch, state }, { parentId, childId, childMap }) {
       console.log(state);
       console.log({
