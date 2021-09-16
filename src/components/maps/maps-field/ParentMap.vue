@@ -21,6 +21,7 @@
       @deactivated="onDeactivated(map.id)"
       @clicked="onClicked(map.id)"
     >
+     <h1 v-if="!map.showChildren" class="display-4 text-center" style="margin-top: 30rem;">{{ map.title }}</h1>
       <v-btn
         v-if="map.excerpt.isActivated"
         class="parent-menu-btn"

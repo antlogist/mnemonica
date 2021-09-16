@@ -94,13 +94,12 @@ const mapsStore = {
         childMap
       });
       state.maps[parentId].excerpt.children[childId] = childMap;
-//      dispatch("saveMaps", {
-//        root: false
-//      });
-      
-        dispatch("saveMap", {id: parentId, title: state.maps[parentId]["title"], excerpt: state.maps[parentId]["excerpt"]});
-      
-      //      console.log(state.maps[parentId].excerpt.children)
+
+      dispatch("saveMap", {
+        id: parentId,
+        title: state.maps[parentId]["title"],
+        excerpt: state.maps[parentId]["excerpt"]
+      });
     },
     async openDialogParentMapList({ commit, dispatch }) {
       await dispatch("fetchMapsList", {
@@ -287,7 +286,6 @@ const mapsStore = {
       } catch (err) {
         console.log(err);
       } finally {
-        
         //Deep copy maps
         state.mapsCopy = JSON.parse(JSON.stringify(state.maps));
         state.maps = {};

@@ -36,7 +36,7 @@ class Map {
     const response = await axios.post(`/wp-json/wp/v2/map/`, data);
     return response;
   }
-  
+
   async saveMap(id, title, excerpt) {
     const data = {
       title: title,

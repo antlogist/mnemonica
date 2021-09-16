@@ -94,6 +94,20 @@
     >
       <v-icon>mdi-content-copy</v-icon>
     </v-btn>
+    <v-btn
+      :style="{
+        zIndex: '999'
+      }"
+      v-if="childMap.isActivated"
+      class="child-save-btn"
+      @click="save"
+      color="secondary"
+      fab
+      x-small
+      dark
+    >
+      <v-icon>mdi-content-save</v-icon>
+    </v-btn>
   </VueDragResize>
 </template>
 
@@ -138,6 +152,13 @@ export default {
       "saveMaps",
       "saveMap"
     ]),
+    save() {
+      this.saveMap({
+        id: this.parentId,
+        title: this.maps[this.parentId].title,
+        excerpt: this.maps[this.parentId].excerpt
+      });
+    },
     onDragstop() {
       this.maps[this.parentId].excerpt.children[this.childMap.id]["x"] = String(
         this.left
@@ -187,11 +208,7 @@ export default {
     },
     deleteChildMap(childId) {
       delete this.maps[this.parentId].excerpt.children[childId];
-      this.saveMap({
-        id: this.parentId,
-        title: this.maps[this.parentId].title,
-        excerpt: this.maps[this.parentId].excerpt
-      });
+      this.save();
       this.show = false;
     },
     openChildDialogTextEdit(childId) {
@@ -230,7 +247,8 @@ export default {
 .child-menu-btn,
 .child-delete-btn,
 .child-copy-btn,
-.child-edit-text-btn {
+.child-edit-text-btn,
+.child-save-btn {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -247,5 +265,8 @@ export default {
 }
 .child-copy-btn {
   margin-left: 120px;
+}
+.child-save-btn {
+  margin-left: 160px;
 }
 </style>

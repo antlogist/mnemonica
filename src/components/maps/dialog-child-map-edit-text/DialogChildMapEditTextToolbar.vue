@@ -16,17 +16,29 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "DialogChildMapEditTextToolbar",
-  computed: {},
+  computed: {
+    ...mapGetters("maps", ["maps", "currentParentMapId"])
+  },
   methods: {
-    ...mapActions("maps", ["closeDialogChildMapEditText", "saveMaps"]),
+    ...mapActions("maps", [
+      "closeDialogChildMapEditText",
+      "saveMaps",
+      "saveMap"
+    ]),
     closeDialog() {
       this.closeDialogChildMapEditText();
     },
     save() {
-      this.saveMaps();
+      const title = this.maps[this.currentParentMapId].title;
+      const excerpt = this.maps[this.currentParentMapId].excerpt;
+      this.saveMap({
+        id: this.currentParentMapId,
+        title: title,
+        excerpt: excerpt
+      });
     }
   }
 };
