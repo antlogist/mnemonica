@@ -1,6 +1,7 @@
 <template>
   <div>
     <VueDragResize
+      :id="map.id"
       :parentScaleX="zoomMap"
       :parentScaleY="zoomMap"
       v-for="map in maps"
@@ -20,6 +21,7 @@
       @deactivated="onDeactivated(map.id)"
       @clicked="onClicked(map.id)"
     >
+     <h1 v-if="!map.showChildren" class="display-4 text-center" style="margin-top: 30rem;">{{ map.title }}</h1>
       <v-btn
         v-if="map.excerpt.isActivated"
         class="parent-menu-btn"
@@ -54,6 +56,7 @@
       </v-btn>
       <v-btn
         v-if="map.excerpt.isActivated"
+        @click="showChildren(map.id)"
         class="show-child-btn"
         color="secondary"
         fab
@@ -96,8 +99,12 @@ export default {
       "fetchMaps",
       "openDialogParentMap",
       "addChildMap",
-      "fetchMapsSelected"
+      "fetchMapsSelected",
+      "showChildMaps"
     ]),
+    showChildren(id) {
+      this.showChildMaps(id);
+    },
     onActivated(id) {
       this.maps[id].excerpt["isActivated"] = true;
     },

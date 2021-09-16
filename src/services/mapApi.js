@@ -37,8 +37,6 @@ class Map {
     return response;
   }
 
-  async saveMaps() {}
-
   async saveMap(id, title, excerpt) {
     const data = {
       title: title,
