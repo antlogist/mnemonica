@@ -290,6 +290,7 @@ const mapsStore = {
         state.mapsCopy = JSON.parse(JSON.stringify(state.maps));
         state.maps = {};
         state.maps = JSON.parse(JSON.stringify(state.mapsCopy));
+        state.mapsCopy = {};
         dispatch("toggleLoader", false, {
           root: true
         });
