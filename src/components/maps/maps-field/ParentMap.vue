@@ -179,9 +179,9 @@ export default {
 .delete-parent-btn,
 .show-child-btn {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  margin-bottom: -40px;
+  z-index: 101;
 }
 .parent-menu-btn {
   margin-left: 0;
