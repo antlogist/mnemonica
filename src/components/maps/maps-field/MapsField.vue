@@ -43,7 +43,7 @@ export default {
 <style>
 .maps-wrapper {
   position: relative;
-  background-color: coral;
+  background-color: lightcoral;
   width: 100%;
   overflow: scroll;
 }
