@@ -8,6 +8,7 @@
       <span>Zoom-in</span>
       <v-icon>mdi-magnify-plus-outline</v-icon>
     </v-btn>
+    <v-icon>{{ zoomMap.toFixed(2) }}</v-icon>
     <v-btn @click="zoomOut">
       <span>Zoom-out</span>
       <v-icon>mdi-magnify-minus-outline</v-icon>
@@ -43,11 +44,9 @@ export default {
     },
     zoomIn() {
       this.zoomInMap();
-      console.log("zoomIn");
     },
     zoomOut() {
       this.zoomOutMap();
-      console.log("zoomOut");
     },
     save() {
       this.saveMaps();
