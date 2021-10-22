@@ -21,6 +21,7 @@
       @deactivated="onDeactivated(map.id)"
       @clicked="onClicked(map.id)"
     >
+    <v-card class="parent-card" @contextmenu="onParentContext">
      <h1 v-if="!map.showChildren" class="display-4 text-center" style="margin-top: 30rem;">{{ map.title }}</h1>
       <v-btn
         v-if="map.excerpt.isActivated"
@@ -72,6 +73,7 @@
         :key="nestedMap.id"
         :parentClicked="parentClicked"
       ></ChildMap>
+      </v-card>
     </VueDragResize>
   </div>
 </template>
@@ -102,6 +104,10 @@ export default {
       "fetchMapsSelected",
       "showChildMaps"
     ]),
+    onParentContext(e) {
+      e.preventDefault();
+      alert("context");
+    },
     showChildren(id) {
       this.showChildMaps(id);
     },
@@ -174,6 +180,14 @@ export default {
 </script>
 
 <style lang="scss" scoped="true">
+.parent-card {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .parent-menu-btn,
 .add-child-btn,
 .delete-parent-btn,
