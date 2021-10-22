@@ -21,8 +21,7 @@
       @deactivated="onDeactivated(map.id)"
       @clicked="onClicked(map.id)"
     >
-    <v-card class="parent-card" @contextmenu="onParentContext">
-     <h1 v-if="!map.showChildren" class="display-4 text-center" style="margin-top: 30rem;">{{ map.title }}</h1>
+    <v-card :data-id="map.id" class="parent-card" @contextmenu="onParentContext">
       <v-btn
         v-if="map.excerpt.isActivated"
         class="parent-menu-btn"
@@ -47,16 +46,6 @@
       </v-btn>
       <v-btn
         v-if="map.excerpt.isActivated"
-        class="delete-parent-btn"
-        color="secondary"
-        fab
-        x-small
-        dark
-      >
-        <v-icon>mdi-delete</v-icon>
-      </v-btn>
-      <v-btn
-        v-if="map.excerpt.isActivated"
         @click="showChildren(map.id)"
         class="show-child-btn"
         color="secondary"
@@ -74,7 +63,27 @@
         :parentClicked="parentClicked"
       ></ChildMap>
       </v-card>
+      <h1 v-if="!map.showChildren" class="display-4 text-center" style="margin-top: 30rem;">{{ map.title }}</h1>
     </VueDragResize>
+
+    <v-menu
+      v-model="showMenu"
+      :position-x="x"
+      :position-y="y"
+      absolute
+      offset-y
+    >
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in items"
+          :key="index"
+          @click="functionCall(item.method)"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+
   </div>
 </template>
 
@@ -90,7 +99,15 @@ export default {
     height: 0,
     top: 0,
     left: 0,
-    parentClicked: false
+    parentClicked: false,
+    showMenu: false,
+    x: 0,
+    y: 0,
+    items: [
+      { title: "Open Parent Map Menu", method: "openParentDialog" },
+      { title: "Chow Child Maps", method: "showChildren" },
+      { title: "New Child Map", method: "newChildMap" }
+    ],
   }),
   computed: {
     ...mapGetters("maps", ["maps"]),
@@ -104,9 +121,25 @@ export default {
       "fetchMapsSelected",
       "showChildMaps"
     ]),
+    functionCall(name) {
+      this[name](this.currentParentId);
+    },
     onParentContext(e) {
       e.preventDefault();
-      alert("context");
+      const target = e.target;
+      const id = target.dataset.id;
+      this.currentParentId = id;
+
+      this.showMenu = false
+      this.x = e.clientX
+      this.y = e.clientY
+      this.$nextTick(() => {
+        this.showMenu = true
+      });
+
+
+      console.log(id);
+
     },
     showChildren(id) {
       this.showChildMaps(id);
@@ -190,7 +223,6 @@ export default {
 }
 .parent-menu-btn,
 .add-child-btn,
-.delete-parent-btn,
 .show-child-btn {
   position: absolute;
   top: 0;
@@ -203,10 +235,7 @@ export default {
 .add-child-btn {
   margin-left: 40px;
 }
-.delete-parent-btn {
-  margin-left: 80px;
-}
 .show-child-btn {
-  margin-left: 120px;
+  margin-left: 80px;
 }
 </style>
