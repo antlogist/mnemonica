@@ -105,7 +105,7 @@ export default {
     y: 0,
     items: [
       { title: "Open Parent Map Menu", method: "openParentDialog" },
-      { title: "Chow Child Maps", method: "showChildren" },
+      { title: "Show Child Maps", method: "showChildren" },
       { title: "New Child Map", method: "newChildMap" }
     ],
   }),
