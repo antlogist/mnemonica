@@ -16,18 +16,27 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "DialogParentMapToolbar",
-  computed: {},
+  computed: {
+    ...mapGetters("maps", ["maps", "currentParentMapId"])
+  },
   methods: {
-    ...mapActions("maps", ["closeDialogParentMap", "saveMaps"]),
+    ...mapActions("maps", ["closeDialogParentMap", "saveMaps", "saveMap"]),
     closeDialog() {
       this.closeDialogParentMap();
     },
+    // save() {
+    //   this.saveMaps();
+    // },
     save() {
-      this.saveMaps();
-    }
+      this.saveMap({
+        id: this.currentParentMapId,
+        title: this.maps[this.currentParentMapId].title,
+        excerpt: this.maps[this.currentParentMapId].excerpt
+      });
+    },
   }
 };
 </script>
